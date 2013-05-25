@@ -1,0 +1,58 @@
+<%= form_for(@user, class: 'form-horizontal') do |f| %>
+  <legend><%= @title %></legend>
+  <fieldset>
+
+    <% if @user.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@user.errors.count, "error") %> prohibited this article from being saved:</h2>
+
+        <ul>
+        <% @user.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <%= f.label :firstname, User.human_attribute_name(:firstname) %>
+    <%= f.text_field :firstname %>
+
+    <%= f.label :lastname, User.human_attribute_name(:lastname) %>
+    <%= f.text_field :lastname %>
+
+    <%= f.label :email_address, User.human_attribute_name(:email_address) %>
+    <%= f.text_field :email_address %>
+
+    <%= f.label :password, User.human_attribute_name(:password) %>
+    <%= f.password_field :password %>
+
+    <%= f.label :role, User.human_attribute_name(:role) %>
+    <%= f.collection_select :role, User::ROLES, :to_s, :humanize %>
+
+    <%= f.label :mobilenumber, User.human_attribute_name(:mobilenumber) %>
+    <%= f.text_field :mobilenumber %>
+
+    <%= f.label :license_id, User.human_attribute_name(:license) %>
+    <%= f.collection_select :license_id, License.all, :id, :name %>
+
+    <%= f.label :email_notifications, class: 'checkbox' do %>
+      <%= f.check_box :email_notifications %> <%= User.human_attribute_name(:email_notifications) %>
+    <% end %>
+
+    <%= f.label :fixed_ceiling, User.human_attribute_name(:fixed_ceiling) %>
+    <%= f.text_field :fixed_ceiling %>
+
+    <%= f.label :activated, class: 'checkbox' do %>
+      <%= f.check_box :activated %> <%= User.human_attribute_name(:activated) %>
+    <% end %>
+
+    <%= f.label :postal_address, User.human_attribute_name(:postal_address) %>
+    <%= f.text_field :postal_address %>
+
+    <div class="form-actions">
+      <%= f.submit t('save'), class: 'btn btn-large btn-primary' %>
+      <%= link_to t('cancel'), users_path, class: 'btn btn-large' %>
+    </div>
+
+  </fieldset>
+<%- end -%>
