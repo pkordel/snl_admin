@@ -1,4 +1,4 @@
-<%= form_for(@user, class: 'form-horizontal') do |f| %>
+<%= form_for(@user, html: { class: 'form-horizontal' }) do |f| %>
   <legend><%= @title %></legend>
   <fieldset>
 
@@ -14,48 +14,95 @@
       </div>
     <% end %>
 
-    <%= f.label :firstname, User.human_attribute_name(:firstname) %>
-    <%= f.text_field :firstname %>
+    <div class='control-group'>
+      <div class='controls'>
+        <%= f.text_field :firstname,
+                          placeholder: User.human_attribute_name(:firstname) %>
+      </div>
+    </div>
 
-    <%= f.label :lastname, User.human_attribute_name(:lastname) %>
-    <%= f.text_field :lastname %>
+    <div class='control-group'>
+      <div class='controls'>
+        <%= f.text_field :lastname,
+                          placeholder: User.human_attribute_name(:lastname) %>
+      </div>
+    </div>
 
-    <%= f.label :email_address, User.human_attribute_name(:email_address) %>
-    <%= f.text_field :email_address %>
+    <div class='control-group'>
+      <div class='controls'>
+        <%= f.text_field :email_address,
+                         placeholder: User.human_attribute_name(:email_address) %>
+      </div>
+    </div>
 
-    <%= f.label :password, User.human_attribute_name(:password) %>
-    <%= f.password_field :password %>
+    <div class='control-group'>
+      <div class='controls'>
+        <%= f.password_field :password,
+                             placeholder: User.human_attribute_name(:password) %>
+      </div>
+    </div>
 
-    <%= f.label :role, User.human_attribute_name(:role) %>
-    <%= f.collection_select :role, User::ROLES, :to_s, :humanize %>
+    <div class='control-group'>
+      <div class='controls'>
+        <%= f.collection_select :role, User::ROLES,
+                                :to_s, :humanize,
+                                include_blank: true %>
+      </div>
+    </div>
 
-    <%= f.label :mobilenumber, User.human_attribute_name(:mobilenumber) %>
-    <%= f.text_field :mobilenumber %>
+    <div class='control-group'>
+      <div class='controls'>
+        <%= f.text_field :mobilenumber,
+                         placeholder: User.human_attribute_name(:mobilenumber) %>
+      </div>
+    </div>
 
-    <%= f.label :license_id, User.human_attribute_name(:license) %>
-    <%= f.collection_select :license_id, License.all, :id, :name %>
+    <div class='control-group'>
+      <div class='controls'>
+        <%= f.collection_select :license_id, License.all, :id, :name %>
+      </div>
+    </div>
 
-    <%= f.label :email_notifications, class: 'checkbox' do %>
-      <%= f.check_box :email_notifications %> <%= User.human_attribute_name(:email_notifications) %>
-    <% end %>
+    <div class='control-group'>
+      <%= f.label :email_notifications, class: 'checkbox control-label' do %>
+          <div class='controls'><%= f.check_box :email_notifications %> <%= User.human_attribute_name(:email_notifications) %></div>
+        <% end %>
+    </div>
 
-    <%= f.label :fixed_ceiling, User.human_attribute_name(:fixed_ceiling) %>
-    <%= f.text_field :fixed_ceiling %>
+    <div class='control-group'>
+      <%= f.label :fixed_ceiling,
+                  User.human_attribute_name(:fixed_ceiling),
+                  class: 'control-label' %>
+      <div class='controls'>
+        <%= f.text_field :fixed_ceiling,
+                         placeholder: User.human_attribute_name(:fixed_ceiling) %>
+      </div>
+    </div>
 
-    <%= f.label :activated, class: 'checkbox' do %>
-      <%= f.check_box :activated %> <%= User.human_attribute_name(:activated) %>
-    <% end %>
+    <div class='control-group'>
+      <%= f.label :activated, class: 'checkbox control-label' do %>
+        <div class='controls'>
+          <%= f.check_box :activated %> <%= User.human_attribute_name(:activated) %>
+        </div>
+      <% end %>
 
-    <%= label_tag :confirmed, class: 'checkbox' do %>
-      <%= check_box_tag :confirmed, 'yes', @user.confirmed? %> <%= t('confirmed') %>
-    <% end %>
+      <%= label_tag :confirmed, class: 'checkbox control-label' do %>
+        <div class='controls'>
+          <%= check_box_tag :confirmed, 'yes', @user.confirmed? %> <%= t('confirmed') %>
+        </div>
+      <% end %>
+    </div>
 
-    <%= f.label :postal_address, User.human_attribute_name(:postal_address) %>
-    <%= f.text_field :postal_address %>
+    <div class='control-group'>
+      <div class='controls'>
+        <%= f.text_field :postal_address,
+                         placeholder: User.human_attribute_name(:postal_address) %>
+      </div>
+    </div>
 
     <div class="form-actions">
-      <%= f.submit t('save'), class: 'btn btn-large btn-primary' %>
-      <%= link_to t('cancel'), users_path, class: 'btn btn-large' %>
+      <%= f.submit t('save'), class: 'btn btn-primary' %>
+      <%= link_to t('cancel'), users_path, class: 'btn' %>
     </div>
 
   </fieldset>
