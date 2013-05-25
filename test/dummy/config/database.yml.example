@@ -1,13 +1,13 @@
 development:
   adapter: postgresql
   encoding: utf8
-  database: snl_dev
+  database: snl_admin_dev
   pool: 5
   host: localhost
 
 test:
   adapter: postgresql
   encoding: utf8
-  database: snl_test
+  database: snl_admin_test
   pool: 5
   host: localhost
