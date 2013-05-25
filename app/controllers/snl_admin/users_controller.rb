@@ -19,8 +19,9 @@ module SnlAdmin
 
     def create
       @user = User.new user_params
+      @user.skip_confirmation! if params[:confirmed]
       if @user.save
-        # @user.confirm!
+        @user.confirm! if params[:confirmed]
         redirect_to users_path
       else
         render :new
@@ -32,8 +33,12 @@ module SnlAdmin
     end
 
     def update
-      @user.update_attributes user_params
-      redirect_to users_path
+      if @user.update_attributes user_params
+        @user.confirm! if params[:confirmed]
+        redirect_to users_path
+      else
+        render :edit
+      end
     end
 
     def destroy
@@ -77,7 +82,8 @@ module SnlAdmin
       params.require(:user).
              permit(:firstname, :lastname, :email_address, :role,
                     :mobilenumber, :license_id, :email_notifications,
-                    :fixed_ceiling, :activated, :postal_address, :password)
+                    :fixed_ceiling, :activated, :postal_address,
+                    :password, :confirmed)
     end
 
     def delete_user

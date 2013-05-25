@@ -46,6 +46,10 @@
       <%= f.check_box :activated %> <%= User.human_attribute_name(:activated) %>
     <% end %>
 
+    <%= label_tag :confirmed, class: 'checkbox' do %>
+      <%= check_box_tag :confirmed, 'yes', @user.confirmed? %> <%= t('confirmed') %>
+    <% end %>
+
     <%= f.label :postal_address, User.human_attribute_name(:postal_address) %>
     <%= f.text_field :postal_address %>
 
