@@ -1,7 +1,19 @@
 <h1><%= t(:dashboard) %></h1>
 
+<h2>Top performers</h2>
+<ol>
+<%- @performers.each do |user| -%>
+  <li>
+    <%= user.full_name %> (<%= user.num_characters_changed %> characters)
+  </li>
+<%- end -%>
+</ol>
+
+<h2>Articles</h2>
+
 <%= pie_chart({
   t(:published)  => Article.published.count,
   t(:authorized) => Article.authorized.count,
   t(:draft)      => Article.drafts.count
 }) %>
+

@@ -12,23 +12,19 @@ module SnlAdmin
     end
 
     def confirmation_status
-      if user.confirmed?
-        css    = 'text-success'
-        status = I18n.t('confirmed')
+      css, status = if user.confirmed?
+        ['text-success', I18n.t('confirmed')]
       else
-        css    = 'text-warning'
-        status = I18n.t('unconfirmed')
+        ['text-warning', I18n.t('unconfirmed')]
       end
       "<span class='#{css}'>#{status}</span>".html_safe
     end
 
     def activation_status
-      if user.activated?
-        css    = 'text-success'
-        status = I18n.t('active')
+      css, status = if user.activated?
+        ['text-success', I18n.t('active')]
       else
-        css    = 'text-warning'
-        status = I18n.t('inactive')
+        ['text-warning', I18n.t('inactive')]
       end
       "<span class='#{css}'>#{status}</span>".html_safe
     end

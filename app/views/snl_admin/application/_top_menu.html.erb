@@ -11,6 +11,9 @@
         <ul class="nav">
           <li><%= link_to t('home'), main_app.root_path %></li>
         </ul>
+        <ul class='nav'>
+          <%= nav_link :dashboard, path: snl_admin.root_path, name: 'Dashboard' %>
+        </ul>
         <ul class="nav">
           <%= nav_link :users, name: t('users') %>
         </ul>

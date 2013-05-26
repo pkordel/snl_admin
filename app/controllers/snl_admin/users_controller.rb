@@ -57,12 +57,12 @@ module SnlAdmin
 
     def reset_statistics
       @user.reset_statistics
-      notice = if @user.save
+      notice = if @user.save!
         "Statistikk for brukeren '#{@user.public_name}' ble slettet"
       else
         "Statistikk for brukeren '#{@user.public_name}' ble ikke slettet"
       end
-      respond_with @user, notice: notice
+      redirect_to @user, notice: notice
     end
 
     private

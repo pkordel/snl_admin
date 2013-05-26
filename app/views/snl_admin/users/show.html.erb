@@ -18,6 +18,7 @@
     <%= link_to t('reset_statistics'),
         reset_statistics_user_path(@user),
         method: :post,
+        data: { confirm: t('are_you_sure') },
         class: 'btn btn-primary btn-danger' %>
   </div>
 </div>
@@ -31,9 +32,14 @@ self.num_changed_authorized = 0
 -->
 
 <%= column_chart({
-  "Changed characters(#{           @user.num_characters_changed})" => 5,
-  "New articles(#{                 @user.num_new_articles      })" => 4,
-  "Changed articles(#{             @user.num_changed_articles  })" => 7,
-  "New authorized articles(#{      @user.num_new_authorized    })" => 7,
-  "Changed authorized articles(#{  @user.num_new_authorized    })" => 7
+  "Changed characters(#{          @user.num_characters_changed })" =>
+                                  (@user.num_characters_changed/10),
+  "New articles(#{                @user.num_new_articles       })" =>
+                                  @user.num_new_articles,
+  "Changed articles(#{            @user.num_changed_articles   })" =>
+                                  @user.num_changed_articles,
+  "New authorized articles(#{     @user.num_new_authorized     })" =>
+                                  @user.num_new_authorized,
+  "Changed authorized articles(#{ @user.num_changed_authorized })" =>
+                                  @user.num_changed_authorized
 }) %>
