@@ -89,8 +89,7 @@ module SnlAdmin
 
     def delete_user
       article_id = @user.article_id
-      @user.article_id = nil
-      @user.save!
+      @user.update_attribute(:article_id, nil)
       Article.find(article_id).remove(@user)
       @user.destroy
     end
