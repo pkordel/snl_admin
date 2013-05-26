@@ -15,6 +15,7 @@
       <th><%= User.human_attribute_name(:public_name) %></th>
       <th><%= User.human_attribute_name(:role) %></th>
       <th><%= User.human_attribute_name(:activated) %></th>
+      <th><%= t(:confirmed) %></th>
       <th></th>
       <th></th>
       <th></th>
@@ -27,8 +28,9 @@
       <td><%= user.lastname %></td>
       <td><%= user.username %></td>
       <td><%= user.public_name %></td>
-      <td><%= t user.role %></td>
+      <td><%= t(user.role).humanize %></td>
       <td><%= user.activated? ? t('yay') : t('nope') %></td>
+      <td><%= user.confirmed? ? t('yay') : t('nope') %></td>
       <td><%= link_to t('show'), user %></td>
       <td><%= link_to t('edit'), edit_user_path(user) %></td>
       <td><%= link_to t('delete'), user, method: :delete, data: { confirm: t('are_you_sure') } %></td>

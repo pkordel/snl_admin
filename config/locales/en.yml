@@ -1,7 +1,15 @@
 en:
+  dashboard: Dashboard
   users: Users
   save: Save
   cancel: Cancel
   edit_user: Edit user
   new_user: New user
   are_you_sure: Are you sure?
+  confirmed: Confirmed
+  unconfirmed: Unconfirmed
+  active: Active
+  inactive: Inactive
+  published: Published
+  authorized: Authorized
+  draft: Draft

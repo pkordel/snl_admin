@@ -11,11 +11,50 @@ module SnlAdmin
       ("#{user.firstname} #{user.lastname}").strip
     end
 
-    # self.num_characters_changed = 0
-    # self.num_new_articles       = 0
-    # self.num_changed_articles   = 0
-    # self.num_new_authorized     = 0
-    # self.num_changed_authorized = 0
+    def confirmation_status
+      if user.confirmed?
+        css    = 'text-success'
+        status = I18n.t('confirmed')
+      else
+        css    = 'text-warning'
+        status = I18n.t('unconfirmed')
+      end
+      "<span class='#{css}'>#{status}</span>".html_safe
+    end
+
+    def activation_status
+      if user.activated?
+        css    = 'text-success'
+        status = I18n.t('active')
+      else
+        css    = 'text-warning'
+        status = I18n.t('inactive')
+      end
+      "<span class='#{css}'>#{status}</span>".html_safe
+    end
+
+    def role_name
+      I18n.t(user.role.to_s).humanize
+    end
+
+    def mobile
+      if user.mobilenumber.present?
+        html = "<abbr title='#{User.human_attribute_name(:mobilenumber)}'>M:</abbr>"
+        html << " #{user.mobilenumber}<br>"
+      end.to_s.html_safe
+    end
+
+    def city
+      "#{@user.postal_address}<br>".html_safe if user.postal_address.present?
+    end
+
+    def license_name
+      "#{License.model_name.human}: #{user.license.name.humanize}"
+    end
+
+    def ceiling
+      "#{User.human_attribute_name(:fixed_ceiling)}: #{user.fixed_ceiling}"
+    end
 
     def characters_changed
       @user.num_characters_changed

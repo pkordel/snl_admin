@@ -1,2 +1,7 @@
-<h1>Dashboard</h1>
-<p><%= link_to t('users'), users_url %></p>
+<h1><%= t(:dashboard) %></h1>
+
+<%= pie_chart({
+  t(:published)  => Article.published.count,
+  t(:authorized) => Article.authorized.count,
+  t(:draft)      => Article.drafts.count
+}) %>

@@ -45,8 +45,7 @@
     <div class='control-group'>
       <div class='controls'>
         <%= f.collection_select :role, User::ROLES,
-                                :to_s, :humanize,
-                                include_blank: true %>
+                                :to_s, :humanize %>
       </div>
     </div>
 
