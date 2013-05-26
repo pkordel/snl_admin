@@ -84,7 +84,9 @@
           <%= f.check_box :activated %> <%= User.human_attribute_name(:activated) %>
         </div>
       <% end %>
+    </div>
 
+    <div class='control-group'>
       <%= label_tag :confirmed, class: 'checkbox control-label' do %>
         <div class='controls'>
           <%= check_box_tag :confirmed, 'yes', @user.confirmed? %> <%= t('confirmed') %>

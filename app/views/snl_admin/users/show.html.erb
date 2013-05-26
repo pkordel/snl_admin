@@ -10,6 +10,8 @@
   <a href="mailto:<%= @user.email_address %>"><%= @user.email_address %></a>
 </address>
 
+<p><%= link_to t('edit'), edit_user_path(@user), class: 'btn btn-primary' %></p>
+
 <!--
 self.num_characters_changed = 0
 self.num_new_articles       = 0

@@ -1,8 +1,22 @@
 <h1><%= t('users') %></h1>
 
-<p>
-  <%= link_to t('new_user'), new_user_path, class: 'btn btn-primary' %>
-</p>
+
+<div class='row'>
+  <div class='span2'>
+    <%= link_to t('new_user'), new_user_path, class: 'btn btn-primary' %>
+  </div>
+  <div class='span7'>
+    <%= paginate @users, theme: 'twitter-bootstrap' %>
+  </div>
+  <div class='span3'>
+    <%= form_tag users_path, method: :get, class: 'form-search' do %>
+      <div class="input-append">
+        <%= search_field_tag 'query', nil, placeholder: 'Brukernavn', class: "span2 search-query"%>
+        <%= button_tag 'Søk', class: "btn"%>
+      </div>
+    <%- end -%>
+  </div>
+</div>
 
 <%- unless @users.blank? -%>
 
@@ -31,9 +45,14 @@
       <td><%= t(user.role).humanize %></td>
       <td><%= user.activated? ? t('yay') : t('nope') %></td>
       <td><%= user.confirmed? ? t('yay') : t('nope') %></td>
-      <td><%= link_to t('show'), user %></td>
-      <td><%= link_to t('edit'), edit_user_path(user) %></td>
-      <td><%= link_to t('delete'), user, method: :delete, data: { confirm: t('are_you_sure') } %></td>
+      <td><%= link_to t('show'), user,
+              class: 'btn btn-mini btn-info' %></td>
+      <td><%= link_to t('edit'), edit_user_path(user),
+              class: 'btn btn-mini btn-warning' %></td>
+      <td><%= link_to t('delete'), user,
+              method: :delete,
+              data: { confirm: t('are_you_sure') },
+              class: 'btn btn-mini btn-danger' %></td>
     </tr>
   <%- end -%>
   </tbody>

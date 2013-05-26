@@ -7,7 +7,12 @@ module SnlAdmin
     respond_to :html
 
     def index
-      @users = User.order('firstname asc')
+      @users = if params[:query]
+        term = params[:query].strip
+        User.where("username LIKE ?", "%#{term}%").order('firstname asc')
+      else
+        User.order('firstname asc')
+      end.page params[:page]
     end
 
     def show
@@ -35,8 +40,8 @@ module SnlAdmin
 
     def update
       if @user.update_attributes user_params
-        @user.confirm! if params[:confirmed]
-        redirect_to users_path
+        @user.confirm! if params[:confirmed] && !@user.confirmed?
+        respond_with @user
       else
         render :edit
       end

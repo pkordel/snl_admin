@@ -19,6 +19,8 @@ Gem::Specification.new do |s|
   s.add_dependency "rails", "~> 3.2.13"
   s.add_dependency "jquery-rails"
   s.add_dependency "chartkick"
+  s.add_dependency "kaminari"
+  s.add_dependency 'bootstrap-kaminari-views'
 
   s.add_development_dependency "pg"
   s.add_development_dependency "activerecord-postgres-hstore"
