@@ -24,11 +24,11 @@ module SnlAdmin
     end
 
     def create
-      @user = User.new user_params
+      @user = SnlAdmin.user_class.new user_params
       @user.skip_confirmation! if params[:confirmed]
       if @user.save
         @user.confirm! if params[:confirmed]
-        redirect_to users_path
+        respond_with @user
       else
         render :new
       end
@@ -48,6 +48,38 @@ module SnlAdmin
     end
 
     def destroy
+      if delete_user
+        notice = "Brukeren '#{@user.public_name}' og dens personlige side ble \
+                  slettet. Brukerens personlige side er heller ikke søkbar lenger."
+        redirect_to users_path, notice: notice
+      end
+    end
+
+    def reset_statistics
+      @user.reset_statistics
+      notice = if @user.save
+        "Statistikk for brukeren '#{@user.public_name}' ble slettet"
+      else
+        "Statistikk for brukeren '#{@user.public_name}' ble ikke slettet"
+      end
+      respond_with @user, notice: notice
+    end
+
+    private
+
+    def set_user
+      @user = params[:id] ? SnlAdmin.user_class.find(params[:id]) : SnlAdmin.user_class.new
+    end
+
+    def user_params
+      params.require(:user).
+             permit(:firstname, :lastname, :email_address, :role,
+                    :mobilenumber, :license_id, :email_notifications,
+                    :fixed_ceiling, :activated, :postal_address,
+                    :password, :confirmed)
+    end
+
+    def delete_user
       if @user.id == current_user.id
         notice = "Din egen bruker '#{@user.public_name}' kan ikke slettes av deg selv."
         redirect_to users_path, notice: notice and return
@@ -71,28 +103,6 @@ module SnlAdmin
         redirect_to users_path, notice: notice and return
       end
 
-      if delete_user
-        notice = "Brukeren '#{@user.public_name}' og dens personlige side ble \
-                  slettet. Brukerens personlige side er heller ikke søkbar lenger."
-        redirect_to users_path, notice: notice and return
-      end
-    end
-
-    private
-
-    def set_user
-      @user = params[:id] ? User.find(params[:id]) : User.new
-    end
-
-    def user_params
-      params.require(:user).
-             permit(:firstname, :lastname, :email_address, :role,
-                    :mobilenumber, :license_id, :email_notifications,
-                    :fixed_ceiling, :activated, :postal_address,
-                    :password, :confirmed)
-    end
-
-    def delete_user
       article_id = @user.article_id
       @user.update_attribute(:article_id, nil)
       Article.find(article_id).remove(@user)

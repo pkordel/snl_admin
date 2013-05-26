@@ -10,7 +10,17 @@
   <a href="mailto:<%= @user.email_address %>"><%= @user.email_address %></a>
 </address>
 
-<p><%= link_to t('edit'), edit_user_path(@user), class: 'btn btn-primary' %></p>
+<div class='row'>
+  <div class='span2'>
+    <%= link_to t('edit'), edit_user_path(@user), class: 'btn btn-primary' %>
+  </div>
+  <div class='span2'>
+    <%= link_to t('reset_statistics'),
+        reset_statistics_user_path(@user),
+        method: :post,
+        class: 'btn btn-primary btn-danger' %>
+  </div>
+</div>
 
 <!--
 self.num_characters_changed = 0

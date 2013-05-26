@@ -1,5 +1,6 @@
 en:
   dashboard: Dashboard
+  home: Home
   users: Users
   save: Save
   cancel: Cancel
@@ -13,3 +14,13 @@ en:
   published: Published
   authorized: Authorized
   draft: Draft
+  editor: Editor
+  authoritative_editor: Authoritative editor
+  sub_editor: Subeditor
+  contributor: Contributor
+  bughunter: Bughunter
+  users: Users
+  yay: Yes
+  nope: No
+  sign_in: Sign in
+  sign_out: Sign out

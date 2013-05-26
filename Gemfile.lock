@@ -110,6 +110,9 @@ PLATFORMS
 
 DEPENDENCIES
   activerecord-postgres-hstore
+  bootstrap-kaminari-views
+  chartkick
   jquery-rails
+  kaminari
   pg
   snl_admin!
