@@ -11,7 +11,7 @@
   <div class='span3'>
     <%= form_tag users_path, method: :get, class: 'form-search' do %>
       <div class="input-append">
-        <%= search_field_tag 'query', nil, placeholder: 'Brukernavn', class: "span2 search-query"%>
+        <%= search_field_tag 'query', nil, placeholder: 'Søkeord', class: "span2 search-query"%>
         <%= button_tag 'Søk', class: "btn"%>
       </div>
     <%- end -%>
@@ -59,3 +59,6 @@
 </table>
 
 <%- end -%>
+<div class='span12'>
+  <%= paginate @users, theme: 'twitter-bootstrap' %>
+</div>

@@ -9,7 +9,9 @@ module SnlAdmin
     def index
       @users = if params[:query]
         term = params[:query].strip
-        User.where("username LIKE ?", "%#{term}%").order('firstname asc')
+        conditions = "username ILIKE ? OR firstname ILIKE ? OR lastname ILIKE ?"
+        User.where(conditions, "%#{term}%", "%#{term}%", "%#{term}%").
+             order('firstname asc')
       else
         User.order('firstname asc')
       end.page params[:page]

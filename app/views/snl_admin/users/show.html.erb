@@ -7,7 +7,9 @@
   <%= @user.ceiling %><br>
   <%= @user.mobile %>
   <%= @user.city %>
-  <a href="mailto:<%= @user.email_address %>"><%= @user.email_address %></a>
+  <%= mail_to @user.email_address %><br>
+  <%= link_to t(:profile_page, full_name: @user.public_name),
+      main_app.show_user_url(subdomain: Subdomainer.for("brukere")) %>
 </address>
 
 <div class='row'>
