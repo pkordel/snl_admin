@@ -4,7 +4,7 @@ module SnlAdmin
   class DashboardController < ApplicationController
     def index
       @performers = User
-        .select([:firstname, :lastname, :num_characters_changed])
+        .select([:id, :firstname, :lastname, :num_characters_changed])
         .order('num_characters_changed desc')
         .limit(5)
     end

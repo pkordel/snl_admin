@@ -7,7 +7,7 @@
 <ol>
 <%- @performers.each do |user| -%>
   <li>
-    <%= user.full_name %>
+    <%= link_to user.full_name, user %>
     <span class="badge badge-info">
       <%= user.num_characters_changed %>
     </span>
