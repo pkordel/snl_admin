@@ -1,6 +1,7 @@
 module SnlAdmin
   class UserPresenter < SimpleDelegator
     attr_reader :user
+    include ActionView::Helpers::NumberHelper
 
     def initialize(user)
       super(user)
@@ -41,7 +42,7 @@ module SnlAdmin
     end
 
     def city
-      "#{@user.postal_address}<br>".html_safe if user.postal_address.present?
+      "#{user.postal_address}<br>".html_safe if user.postal_address.present?
     end
 
     def license_name
@@ -53,7 +54,12 @@ module SnlAdmin
     end
 
     def characters_changed
-      @user.num_characters_changed
+      user.num_characters_changed
+    end
+
+    def pay
+      pay = PayCalculator.new(user).calculate
+      "#{I18n.t(:pay)}: #{number_to_currency pay}<br>".html_safe
     end
   end
 end

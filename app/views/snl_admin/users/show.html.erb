@@ -7,6 +7,7 @@
   <%= @user.ceiling %><br>
   <%= @user.mobile %>
   <%= @user.city %>
+  <%= @user.pay %>
   <%= mail_to @user.email_address %><br>
   <%= link_to t(:profile_page, full_name: @user.public_name),
       main_app.show_user_url(subdomain: Subdomainer.for("brukere")) %>
