@@ -59,7 +59,7 @@ module SnlAdmin
 
     def pay
       pay = PayCalculator.new(user).calculate
-      "#{I18n.t(:pay)}: #{number_to_currency pay}<br>".html_safe
+      number_to_currency pay
     end
   end
 end
