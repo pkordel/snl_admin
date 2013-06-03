@@ -70,7 +70,9 @@ module SnlAdmin
     private
 
     def set_user
-      @user = params[:id] ? SnlAdmin.user_class.find(params[:id]) : SnlAdmin.user_class.new
+      @user = params[:id] ?
+        SnlAdmin.user_class.find(params[:id]) :
+        SnlAdmin.user_class.new(role: 'contributor')
     end
 
     def user_params
