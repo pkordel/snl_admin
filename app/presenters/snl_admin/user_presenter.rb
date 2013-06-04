@@ -50,7 +50,7 @@ module SnlAdmin
     end
 
     def ceiling
-      "#{User.human_attribute_name(:fixed_ceiling)}: #{user.fixed_ceiling}"
+      "#{SnlAdmin.user_class.human_attribute_name(:fixed_ceiling)}: #{user.fixed_ceiling}"
     end
 
     def characters_changed
@@ -60,6 +60,11 @@ module SnlAdmin
     def pay
       pay = PayCalculator.new(user).calculate
       number_to_currency pay
+    end
+
+    def paid_to_date
+      paid = number_to_currency(user.paid_to_date || 0.00)
+      "#{SnlAdmin.user_class.human_attribute_name(:paid_to_date)}: #{paid}"
     end
   end
 end

@@ -17,37 +17,37 @@
     <div class='control-group'>
       <div class='controls'>
         <%= f.text_field :firstname,
-                          placeholder: User.human_attribute_name(:firstname) %>
+                          placeholder: SnlAdmin.user_class.human_attribute_name(:firstname) %>
       </div>
     </div>
 
     <div class='control-group'>
       <div class='controls'>
         <%= f.text_field :lastname,
-                          placeholder: User.human_attribute_name(:lastname) %>
+                          placeholder: SnlAdmin.user_class.human_attribute_name(:lastname) %>
       </div>
     </div>
 
     <div class='control-group'>
       <div class='controls'>
         <%= f.text_field :email_address,
-                         placeholder: User.human_attribute_name(:email_address) %>
+                         placeholder: SnlAdmin.user_class.human_attribute_name(:email_address) %>
       </div>
     </div>
 
     <div class='control-group'>
       <div class='controls'>
         <%= f.password_field :password,
-                             placeholder: User.human_attribute_name(:password) %>
+                             placeholder: SnlAdmin.user_class.human_attribute_name(:password) %>
       </div>
     </div>
 
     <div class='control-group'>
-      <%= f.label :institution,
-                  User.human_attribute_name(:role),
+      <%= f.label :role,
+                  SnlAdmin.user_class.human_attribute_name(:role),
                   class: 'control-label' %>
       <div class='controls'>
-        <%= f.collection_select :role, User::ROLES,
+        <%= f.collection_select :role, SnlAdmin.user_class::ROLES,
                                 :to_s, :humanize %>
       </div>
     </div>
@@ -55,7 +55,7 @@
     <div class='control-group'>
       <div class='controls'>
         <%= f.text_field :mobilenumber,
-                         placeholder: User.human_attribute_name(:mobilenumber) %>
+                         placeholder: SnlAdmin.user_class.human_attribute_name(:mobilenumber) %>
       </div>
     </div>
 
@@ -71,24 +71,34 @@
 
     <div class='control-group'>
       <%= f.label :email_notifications, class: 'checkbox control-label' do %>
-          <div class='controls'><%= f.check_box :email_notifications %> <%= User.human_attribute_name(:email_notifications) %></div>
+          <div class='controls'><%= f.check_box :email_notifications %> <%= SnlAdmin.user_class.human_attribute_name(:email_notifications) %></div>
         <% end %>
     </div>
 
     <div class='control-group'>
       <%= f.label :fixed_ceiling,
-                  User.human_attribute_name(:fixed_ceiling),
+                  SnlAdmin.user_class.human_attribute_name(:fixed_ceiling),
                   class: 'control-label' %>
       <div class='controls'>
         <%= f.text_field :fixed_ceiling,
-                         placeholder: User.human_attribute_name(:fixed_ceiling) %>
+                         placeholder: SnlAdmin.user_class.human_attribute_name(:fixed_ceiling) %>
+      </div>
+    </div>
+
+    <div class='control-group'>
+      <%= f.label :paid_to_date,
+                  SnlAdmin.user_class.human_attribute_name(:paid_to_date),
+                  class: 'control-label' %>
+      <div class='controls'>
+        <%= f.text_field :paid_to_date,
+                         placeholder: SnlAdmin.user_class.human_attribute_name(:paid_to_date) %>
       </div>
     </div>
 
     <div class='control-group'>
       <%= f.label :activated, class: 'checkbox control-label' do %>
         <div class='controls'>
-          <%= f.check_box :activated %> <%= User.human_attribute_name(:activated) %>
+          <%= f.check_box :activated %> <%= SnlAdmin.user_class.human_attribute_name(:activated) %>
         </div>
       <% end %>
     </div>
@@ -104,16 +114,16 @@
     <div class='control-group'>
       <div class='controls'>
         <%= f.text_field :postal_address,
-                         placeholder: User.human_attribute_name(:postal_address) %>
+                         placeholder: SnlAdmin.user_class.human_attribute_name(:postal_address) %>
       </div>
     </div>
 
     <div class='control-group'>
       <%= f.label :institution,
-                  User.human_attribute_name(:institution),
+                  SnlAdmin.user_class.human_attribute_name(:institution),
                   class: 'control-label' %>
       <div class='controls'>
-        <%= f.collection_select :role, SNL::INSTITUTIONS,
+        <%= f.collection_select :institution, SNL::INSTITUTIONS,
                                 :to_s, :humanize,
                                 include_blank: true %>
       </div>
