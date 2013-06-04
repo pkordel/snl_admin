@@ -9,22 +9,23 @@
       <%= link_to 'SNL Admin', root_path, class: 'brand' %>
       <div class="nav-collapse collapse">
         <ul class="nav">
-          <li><%= link_to t('home'), main_app.root_path %></li>
+          <li><%= link_to t(:home), main_app.root_path %></li>
         </ul>
         <ul class='nav'>
           <%= nav_link :dashboard, path: snl_admin.root_path, name: t(:dashboard) %>
         </ul>
         <ul class="nav">
-          <%= nav_link :users, name: t('users') %>
+          <%= nav_link :users, name: t(:users) %>
         </ul>
         <ul class="nav">
           <%- if current_user -%>
             <li>
-              <%= link_to t('sign_out'), main_app.logout_path %>
+              <%= link_to "#{t(:sign_out)} #{current_user.username}",
+                          main_app.logout_path %>
             </li>
           <%- else -%>
             <li>
-              <%= link_to t('sign_in'), main_app.login_path %>
+              <%= link_to t(:sign_in), main_app.login_path %>
             </li>
           <%- end -%>
         </ul>

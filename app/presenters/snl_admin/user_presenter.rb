@@ -63,14 +63,14 @@ module SnlAdmin
     end
 
     def paid_to_date
-      paid = number_to_currency(user.paid_to_date || 0.00)
+      paid = number_to_currency(user.paid_to_date.to_i)
       "#{SnlAdmin.user_class.human_attribute_name(:paid_to_date)}: #{paid}"
     end
 
     def unpaid_balance
-      earnings = PayCalculator.new(user).calculate.to_f
-      unpaid_balance = number_to_currency(earnings - user.paid_to_date.to_f)
-      "#{I18n.t(:unpaid_balance)}: #{unpaid_balance}"
+      earnings = PayCalculator.new(user).calculate.to_i
+      unpaid_balance = number_to_currency(earnings - user.paid_to_date.to_i)
+      "#{I18n.t(:unpaid_balance, year: Date.today.year)}: #{unpaid_balance}"
     end
   end
 end
