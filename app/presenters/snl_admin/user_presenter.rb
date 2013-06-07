@@ -12,10 +12,6 @@ module SnlAdmin
       ("#{user.firstname} #{user.lastname}").strip
     end
 
-    def role_name
-      I18n.t(user.role.to_s).humanize
-    end
-
     def confirmation_status
       css, status = if user.confirmed?
         ['text-success', I18n.t('confirmed')]
@@ -34,9 +30,13 @@ module SnlAdmin
       "<span class='#{css}'>#{status}</span>".html_safe
     end
 
+    def role_name
+      I18n.t(user.role.to_s).humanize
+    end
+
     def mobile
       if user.mobilenumber.present?
-        html = "<abbr title='#{User.human_attribute_name(:mobilenumber)}'>M:</abbr>"
+        html = "<abbr title='#{SnlAdmin.user_class.human_attribute_name(:mobilenumber)}'>M:</abbr>"
         html << " #{user.mobilenumber}<br>"
       end.to_s.html_safe
     end
