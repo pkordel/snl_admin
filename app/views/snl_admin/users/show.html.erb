@@ -1,43 +1,10 @@
 <address>
   <strong><%= @user.public_name %></strong><br>
-  <%= @user.confirmation_status %><br>
-  <%= @user.activation_status %><br>
   <%= @user.role_name %><br>
-  <%= @user.license_name %><br>
-  <%= @user.ceiling %><br>
-  <%= @user.mobile %>
-  <%= @user.city %>
-  <%= @user.unpaid_balance %><br>
-  <%= mail_to @user.email_address %><br>
-  <%= link_to t(:profile_page, full_name: @user.public_name),
-      main_app.show_user_url(subdomain: Subdomainer.for("brukere")) %>
 </address>
 
 <div class='row'>
   <div class='span2'>
     <%= link_to t('edit'), edit_user_path(@user), class: 'btn btn-primary' %>
   </div>
-  <div class='span2'>
-    <%= link_to t('reset_statistics'),
-        reset_statistics_user_path,
-        method: :post,
-        data: { confirm: t('are_you_sure') },
-        class: 'btn btn-primary btn-danger' %>
-  </div>
 </div>
-
-<!--
-self.num_characters_changed = 0
-self.num_new_articles       = 0
-self.num_changed_articles   = 0
-self.num_new_authorized     = 0
-self.num_changed_authorized = 0
--->
-
-<%= column_chart({
-  "Changed characters (in 1000)" => @user.num_characters_changed/1000,
-  "New articles"                 => @user.num_new_articles,
-  "Changed articles"             => @user.num_changed_articles,
-  "New authorized articles"      => @user.num_new_authorized,
-  "Changed authorized articles"  => @user.num_changed_authorized
-}) %>
