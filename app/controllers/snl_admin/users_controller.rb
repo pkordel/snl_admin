@@ -29,7 +29,6 @@ module SnlAdmin
       @user = SnlAdmin.user_class.new user_params
       @user.skip_confirmation! if params[:confirmed]
       if @user.save
-        @user.confirm! if params[:confirmed]
         respond_with @user
       else
         render :new
@@ -77,7 +76,7 @@ module SnlAdmin
 
     def user_params
       params.require(:user).
-             permit(:firstname, :lastname, :email_address, :role,
+             permit(:firstname, :lastname, :email_address, :username, :role,
                     :mobilenumber, :license_id, :email_notifications,
                     :fixed_ceiling, :activated, :postal_address,
                     :password, :confirmed, :institution, :paid_to_date)
