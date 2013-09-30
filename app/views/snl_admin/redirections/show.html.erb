@@ -1,0 +1,10 @@
+<address>
+  <strong><%= [@redirection.urlpath, @redirection.headword, @redirection.clarification].compact.join("/") %></strong><br>
+  <%= @redirection.article_id %><br>
+</address>
+
+<div class='row'>
+  <div class='span2'>
+    <%= link_to t('edit'), edit_redirection_path(@redirection), class: 'btn btn-primary' %>
+  </div>
+</div>

@@ -1,0 +1,51 @@
+<%= form_for(@redirection, html: { class: 'form-horizontal' }) do |f| %>
+  <legend><%= @title %></legend>
+  <fieldset>
+
+    <% if @redirection.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= t('errors.template.body') %></h2>
+
+        <ul>
+        <% @redirection.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class='control-group'>
+      <div class='controls'>
+        <%= f.text_field :urlpath,
+                          placeholder: SnlAdmin.redirection_class.human_attribute_name(:urlpath) %>
+      </div>
+    </div>
+
+    <div class='control-group'>
+      <div class='controls'>
+        <%= f.text_field :headword,
+                          placeholder: SnlAdmin.redirection_class.human_attribute_name(:headword) %>
+      </div>
+    </div>
+
+    <div class='control-group'>
+      <div class='controls'>
+        <%= f.text_field :clarification,
+                          placeholder: SnlAdmin.redirection_class.human_attribute_name(:clarification) %>
+      </div>
+    </div>
+
+    <div class='control-group'>
+      <div class='controls'>
+        <%= f.text_field :article_id,
+                          placeholder: SnlAdmin.redirection_class.human_attribute_name(:article_id) %>
+      </div>
+    </div>        
+
+    <div class="form-actions">
+      <%= f.submit t('save'), class: 'btn btn-primary' %>
+      <%= link_to t('cancel'), users_path, class: 'btn' %>
+    </div>
+
+  </fieldset>
+<%- end -%>
