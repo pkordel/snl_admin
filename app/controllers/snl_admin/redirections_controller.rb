@@ -9,7 +9,7 @@ module SnlAdmin
     def index
       @redirections = if params[:query]
         term = params[:query].strip
-        conditions = "permalink ILIKE ? OR to_permalink ILIKE"
+        conditions = "permalink ILIKE ? OR to_permalink ILIKE ?"
         Redirection.where(conditions, "%#{term}%", "%#{term}%").
              order('permalink asc')
       else
