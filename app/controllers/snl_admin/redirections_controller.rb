@@ -9,11 +9,11 @@ module SnlAdmin
     def index
       @redirections = if params[:query]
         term = params[:query].strip
-        conditions = "urlpath ILIKE ? OR headword ILIKE ? OR clarification ILIKE ?"
-        Redirection.where(conditions, "%#{term}%", "%#{term}%", "%#{term}%").
-             order('headword asc')
+        conditions = "permalink ILIKE ? OR to_permalink ILIKE"
+        Redirection.where(conditions, "%#{term}%", "%#{term}%").
+             order('permalink asc')
       else
-        Redirection.order('headword asc')
+        Redirection.order('permalink asc')
       end.page params[:page]
     end
 
@@ -55,9 +55,7 @@ module SnlAdmin
 
     def redirection_params
       valid_params = params.require(:redirection).
-             permit(:urlpath, :headword, :clarification, :article_id)
-      valid_params[:urlpath] = nil if valid_params[:urlpath].empty?
-      valid_params[:clarification] = nil if valid_params[:clarification].empty?
+             permit(:permalink, :to_permalink, :from_encyclopedia_id, :to_encyclopedia_id)
       valid_params
     end
 

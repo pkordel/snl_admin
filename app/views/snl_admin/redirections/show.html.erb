@@ -1,6 +1,6 @@
 <address>
-  <strong><%= [@redirection.urlpath, @redirection.headword, @redirection.clarification].compact.join("/") %></strong><br>
-  <%= @redirection.article_id %><br>
+  <strong><%= [@redirection.from_encyclopedia_id, @redirection.permalink].compact.join(" - ") %></strong><br>
+  <%= [@redirection.to_encyclopedia_id, @redirection.to_permalink].compact.join(" - ") %><br>
 </address>
 
 <div class='row'>

@@ -16,29 +16,29 @@
 
     <div class='control-group'>
       <div class='controls'>
-        <%= f.text_field :urlpath,
-                          placeholder: SnlAdmin.redirection_class.human_attribute_name(:urlpath) %>
+        <%= f.text_field :from_encyclopedia_id,
+                          placeholder: SnlAdmin.redirection_class.human_attribute_name(:from_encyclopedia_id) %>
       </div>
     </div>
 
     <div class='control-group'>
       <div class='controls'>
-        <%= f.text_field :headword,
-                          placeholder: SnlAdmin.redirection_class.human_attribute_name(:headword) %>
+        <%= f.text_field :permalink,
+                          placeholder: SnlAdmin.redirection_class.human_attribute_name(:permalink) %>
       </div>
     </div>
 
     <div class='control-group'>
       <div class='controls'>
-        <%= f.text_field :clarification,
-                          placeholder: SnlAdmin.redirection_class.human_attribute_name(:clarification) %>
+        <%= f.text_field :to_encyclopedia_id,
+                          placeholder: SnlAdmin.redirection_class.human_attribute_name(:to_encyclopedia_id) %>
       </div>
     </div>
 
     <div class='control-group'>
       <div class='controls'>
-        <%= f.text_field :article_id,
-                          placeholder: SnlAdmin.redirection_class.human_attribute_name(:article_id) %>
+        <%= f.text_field :to_permalink,
+                          placeholder: SnlAdmin.redirection_class.human_attribute_name(:to_permalink) %>
       </div>
     </div>        
 

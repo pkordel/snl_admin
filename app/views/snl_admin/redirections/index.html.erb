@@ -20,10 +20,10 @@
 <table class="table table-striped table-bordered table-condensed table-hover">
   <thead>
     <tr>
-      <th><%= Redirection.human_attribute_name(:urlpath) %></th>
-      <th><%= Redirection.human_attribute_name(:headword) %></th>
-      <th><%= Redirection.human_attribute_name(:clarification) %></th>
-      <th><%= Redirection.human_attribute_name(:article_id) %></th>
+      <th><%= Redirection.human_attribute_name(:from_encyclopedia_id) %></th>
+      <th><%= Redirection.human_attribute_name(:permalink) %></th>
+      <th><%= Redirection.human_attribute_name(:to_encyclopedia_id) %></th>
+      <th><%= Redirection.human_attribute_name(:to_permalink) %></th>
       <th></th>
       <th></th>
       <th></th>
@@ -32,10 +32,10 @@
   <tbody>
   <%- @redirections.each do |redirection| -%>
     <tr>
-      <td><%= redirection.urlpath %></td>
-      <td><%= redirection.headword %></td>
-      <td><%= redirection.clarification %></td>
-      <td><%= redirection.article_id %></td>
+      <td><%= redirection.from_encyclopedia_id %></td>
+      <td><%= redirection.permalink %></td>
+      <td><%= redirection.to_encyclopedia_id %></td>
+      <td><%= redirection.to_permalink %></td>
       <td><%= link_to t(:show), redirection,
               class: 'btn btn-mini btn-info' %></td>
       <td><%= link_to t(:edit), edit_redirection_path(redirection),
