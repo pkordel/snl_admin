@@ -1,6 +1,6 @@
 <address>
-  Fra <%= Encyclopedia.with_id(@redirection.from_encyclopedia_id).name %>, <strong><%= @redirection.permalink %></strong> til 
-  <%= Encyclopedia.with_id(@redirection.to_encyclopedia_id).name %>, <strong><%= @redirection.to_permalink %></strong><br>
+  Fra <%= Encyclopedia.with_id(@redirection.from_encyclopedia_id).system_name %>, <strong><%= @redirection.permalink %></strong> til 
+  <%= Encyclopedia.with_id(@redirection.to_encyclopedia_id).system_name %>, <strong><%= @redirection.to_permalink %></strong><br>
 </address>
 
 <div class='row'>

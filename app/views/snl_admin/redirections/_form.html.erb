@@ -16,7 +16,7 @@
 
     <div class='control-group'>
       <div class='controls'>
-        <%= f.select :from_encyclopedia_id, Encyclopedia.all.collect {|e| [e.name, e.id] } %>
+        <%= f.select :from_encyclopedia_id, Encyclopedia.all.collect {|e| [e.system_name, e.id] } %>
       </div>
     </div>
 
@@ -29,7 +29,7 @@
 
     <div class='control-group'>
       <div class='controls'>
-        <%= f.select :to_encyclopedia_id, Encyclopedia.all.collect {|e| [e.name, e.id] } %>
+        <%= f.select :to_encyclopedia_id, Encyclopedia.all.collect {|e| [e.system_name, e.id] } %>
       </div>
     </div>
 
