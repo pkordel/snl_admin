@@ -16,8 +16,7 @@
 
     <div class='control-group'>
       <div class='controls'>
-        <%= f.text_field :from_encyclopedia_id,
-                          placeholder: SnlAdmin.redirection_class.human_attribute_name(:from_encyclopedia_id) %>
+        <%= f.select :from_encyclopedia_id, Encyclopedia.all.collect {|e| [e.name, e.id] } %>
       </div>
     </div>
 
@@ -30,8 +29,7 @@
 
     <div class='control-group'>
       <div class='controls'>
-        <%= f.text_field :to_encyclopedia_id,
-                          placeholder: SnlAdmin.redirection_class.human_attribute_name(:to_encyclopedia_id) %>
+        <%= f.select :to_encyclopedia_id, Encyclopedia.all.collect {|e| [e.name, e.id] } %>
       </div>
     </div>
 
@@ -44,7 +42,7 @@
 
     <div class="form-actions">
       <%= f.submit t('save'), class: 'btn btn-primary' %>
-      <%= link_to t('cancel'), users_path, class: 'btn' %>
+      <%= link_to t('cancel'), redirections_path, class: 'btn' %>
     </div>
 
   </fieldset>

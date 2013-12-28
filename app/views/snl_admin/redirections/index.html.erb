@@ -32,9 +32,9 @@
   <tbody>
   <%- @redirections.each do |redirection| -%>
     <tr>
-      <td><%= redirection.from_encyclopedia_id %></td>
+      <td><%= Encyclopedia.with_id(redirection.from_encyclopedia_id).name %></td>
       <td><%= redirection.permalink %></td>
-      <td><%= redirection.to_encyclopedia_id %></td>
+      <td><%= Encyclopedia.with_id(redirection.to_encyclopedia_id).name %></td>
       <td><%= redirection.to_permalink %></td>
       <td><%= link_to t(:show), redirection,
               class: 'btn btn-mini btn-info' %></td>
