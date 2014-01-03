@@ -1,0 +1,49 @@
+<%= form_for(@redirection, html: { class: 'form-horizontal' }) do |f| %>
+  <legend><%= @title %></legend>
+  <fieldset>
+
+    <% if @redirection.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= t('errors.template.body') %></h2>
+
+        <ul>
+        <% @redirection.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class='control-group'>
+      <div class='controls'>
+        <%= f.select :from_encyclopedia_id, Encyclopedia.all.collect {|e| [e.system_name, e.id] } %>
+      </div>
+    </div>
+
+    <div class='control-group'>
+      <div class='controls'>
+        <%= f.text_field :permalink,
+                          placeholder: SnlAdmin.redirection_class.human_attribute_name(:permalink) %>
+      </div>
+    </div>
+
+    <div class='control-group'>
+      <div class='controls'>
+        <%= f.select :to_encyclopedia_id, Encyclopedia.all.collect {|e| [e.system_name, e.id] } %>
+      </div>
+    </div>
+
+    <div class='control-group'>
+      <div class='controls'>
+        <%= f.text_field :to_permalink,
+                          placeholder: SnlAdmin.redirection_class.human_attribute_name(:to_permalink) %>
+      </div>
+    </div>        
+
+    <div class="form-actions">
+      <%= f.submit t('save'), class: 'btn btn-primary' %>
+      <%= link_to t('cancel'), redirections_path, class: 'btn' %>
+    </div>
+
+  </fieldset>
+<%- end -%>

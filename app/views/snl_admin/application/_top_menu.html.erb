@@ -13,6 +13,7 @@
           <li><%= link_to t(:home), main_app.root_url %></li>
           <%= nav_link :dashboard, path: snl_admin.root_path, name: t(:dashboard) %>
           <%= nav_link :users, name: t(:users) %>
+          <%= nav_link :redirections, name: t(:redirections) %>
           <%- if current_user -%>
             <li>
               <%= link_to "#{t(:sign_out)} #{current_user.username}",

@@ -6,4 +6,8 @@ SnlAdmin::Engine.routes.draw do
       post :reset_statistics
     end
   end
+
+  resources :redirections do
+    get 'page/:page', :action => :index, :on => :collection
+  end
 end
