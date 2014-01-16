@@ -79,7 +79,7 @@ module SnlAdmin
              permit(:firstname, :lastname, :email_address, :username, :role,
                     :mobilenumber, :license_id, :email_notifications,
                     :fixed_ceiling, :activated, :postal_address,
-                    :password, :confirmed, :institution, :paid_to_date)
+                    :password, :confirmed, :institution_code, :paid_to_date)
     end
 
     def delete_user

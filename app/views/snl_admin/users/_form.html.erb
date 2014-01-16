@@ -60,7 +60,7 @@
     </div>
 
     <div class='control-group'>
-      <%= f.label :institution,
+      <%= f.label :license_id,
                   License.model_name.human,
                   class: 'control-label' %>
       <div class='controls'>
@@ -119,12 +119,12 @@
     </div>
 
     <div class='control-group'>
-      <%= f.label :institution,
-                  SnlAdmin.user_class.human_attribute_name(:institution),
+      <%= f.label :institution_code,
+                  SnlAdmin.user_class.human_attribute_name(:institution_code),
                   class: 'control-label' %>
       <div class='controls'>
-        <%= f.collection_select :institution, SNL::INSTITUTIONS,
-                                :to_s, :humanize,
+        <%= f.collection_select :institution_code, Institution.all.map{ |i| i.code },
+                                :to_s, :upcase,
                                 include_blank: true %>
       </div>
     </div>
