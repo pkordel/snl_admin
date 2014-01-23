@@ -8,7 +8,7 @@ module SnlAdmin
 
     def index
       @redirections = if params[:query]
-        term = SnlAdmin.permalink_class.encode_uri(params[:query].strip)
+        term = params[:query].strip
         conditions = "permalink ILIKE ? OR to_permalink ILIKE ?"
         Redirection.where(conditions, "%#{term}%", "%#{term}%").
              order('permalink asc')
@@ -56,8 +56,6 @@ module SnlAdmin
     def redirection_params
       valid_params = params.require(:redirection).
              permit(:permalink, :to_permalink, :from_encyclopedia_id, :to_encyclopedia_id)
-      valid_params[:permalink] = SnlAdmin.permalink_class.encode_uri(valid_params[:permalink])
-      valid_params[:to_permalink] = SnlAdmin.permalink_class.encode_uri(valid_params[:to_permalink])
       valid_params
     end
 
