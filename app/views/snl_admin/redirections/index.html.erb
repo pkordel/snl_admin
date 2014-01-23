@@ -12,7 +12,10 @@
       <div class="input-append">
         <%= search_field_tag 'query', nil, placeholder: 'Søkeord', class: "span2 search-query"%>
         <%= button_tag 'Søk', class: "btn"%>
+
       </div>
+      <i class="icon-backward encode" data-encode-selector="input#query"></i>
+      <i class="icon-forward decode" data-decode-selector="input#query" style="display: none;"></i>
     <%- end -%>
   </div>
 </div>

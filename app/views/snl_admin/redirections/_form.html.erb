@@ -24,6 +24,8 @@
       <div class='controls'>
         <%= f.text_field :permalink,
                           placeholder: SnlAdmin.redirection_class.human_attribute_name(:permalink) %>
+        <i class="icon-backward encode" data-encode-selector="input#redirection_permalink"></i>
+        <i class="icon-forward decode" data-decode-selector="input#redirection_permalink" style="display: none;"></i>
       </div>
     </div>
 
@@ -37,6 +39,8 @@
       <div class='controls'>
         <%= f.text_field :to_permalink,
                           placeholder: SnlAdmin.redirection_class.human_attribute_name(:to_permalink) %>
+        <i class="icon-backward encode" data-encode-selector="input#redirection_to_permalink"></i>
+        <i class="icon-forward decode" data-decode-selector="input#redirection_to_permalink" style="display: none;"></i>
       </div>
     </div>        
 
