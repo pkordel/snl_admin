@@ -9,13 +9,12 @@
   </div>
   <div class='span3'>
     <%= form_tag redirections_path, method: :get, class: 'form-search' do %>
-      <div class="input-append">
+      <div class="input-append inline">
         <%= search_field_tag 'query', nil, placeholder: 'Søkeord', class: "span2 search-query"%>
         <%= button_tag 'Søk', class: "btn"%>
-
+        <i class="icon-backward decode" data-decode-selector="input#query"></i>
+        <i class="icon-forward encode" data-encode-selector="input#query"></i>
       </div>
-      <i class="icon-backward encode" data-encode-selector="input#query"></i>
-      <i class="icon-forward decode" data-decode-selector="input#query" style="display: none;"></i>
     <%- end -%>
   </div>
 </div>

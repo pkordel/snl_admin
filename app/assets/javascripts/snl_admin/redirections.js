@@ -6,8 +6,6 @@ $(document).ready(function() {
     input = $(selector);
     value = input.val() || "";
     input.val(encodeURIComponent(value));
-    target.siblings(".decode").show();
-    target.hide();
     return false;
   });
 
@@ -17,8 +15,6 @@ $(document).ready(function() {
     input = $(selector);
     value = input.val() || "";
     input.val(decodeURIComponent(value));
-    target.siblings(".encode").show();
-    target.hide();
     return false;
   });
 
