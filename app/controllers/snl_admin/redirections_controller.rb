@@ -3,7 +3,7 @@ require_dependency "snl_admin/application_controller"
 
 module SnlAdmin
   class RedirectionsController < ApplicationController
-    before_filter :set_redirection
+    before_filter :set_redirection, except: [:index]
     respond_to :html
 
     def index
@@ -22,7 +22,7 @@ module SnlAdmin
     end
 
     def edit
-      @title = t('edit_user')
+      @title = t('edit_redirection')
     end
 
     def show
@@ -47,7 +47,7 @@ module SnlAdmin
 
     def destroy
       @redirection.destroy
-      notice = "Slettet redirectionen"
+      notice = t('destroy_redirection')
       redirect_to redirections_path, notice: notice
     end
 
