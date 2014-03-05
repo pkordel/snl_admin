@@ -1,5 +1,6 @@
 SnlAdmin::Engine.routes.draw do
   root to: "dashboard#index"
+  get 'dashboard' => 'dashboard#index'
 
   resources :users do
     get 'page/:page', :action => :index, :on => :collection

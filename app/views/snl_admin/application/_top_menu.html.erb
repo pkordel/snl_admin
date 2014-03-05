@@ -11,7 +11,7 @@
       <div class="nav-collapse collapse">
         <ul class="nav">
           <li><%= link_to t(:home), main_app.root_url %></li>
-          <%= nav_link :dashboard, path: snl_admin.root_path, name: t(:dashboard) %>
+          <%= nav_link :dashboard, path: snl_admin.dashboard_path, name: t(:dashboard) %>
           <%= nav_link :users, name: t(:users) %>
           <%= nav_link :redirections, name: t(:redirections) %>
           <%= nav_link :taxonomies, name: t(:taxonomies) %>

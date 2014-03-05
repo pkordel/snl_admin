@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    snl_admin (0.0.3)
+    snl_admin (0.0.4)
       activerecord-postgres-hstore
       bootstrap-kaminari-views
       chartkick
