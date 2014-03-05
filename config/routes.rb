@@ -1,5 +1,6 @@
 SnlAdmin::Engine.routes.draw do
   root to: "dashboard#index"
+
   resources :users do
     get 'page/:page', :action => :index, :on => :collection
     member do
@@ -8,6 +9,10 @@ SnlAdmin::Engine.routes.draw do
   end
 
   resources :redirections do
+    get 'page/:page', :action => :index, :on => :collection
+  end
+
+  resources :taxonomies do
     get 'page/:page', :action => :index, :on => :collection
   end
 end
