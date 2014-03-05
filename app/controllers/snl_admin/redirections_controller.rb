@@ -10,10 +10,10 @@ module SnlAdmin
       @redirections = if params[:query]
         term = params[:query].strip
         conditions = "permalink ILIKE ? OR to_permalink ILIKE ?"
-        Redirection.where(conditions, "%#{term}%", "%#{term}%").
-             order('permalink asc')
+        SnlAdmin.redirection_class.where(conditions, "%#{term}%", "%#{term}%").
+                 order('permalink asc')
       else
-        Redirection.order('permalink asc')
+        SnlAdmin.redirection_class.order('permalink asc')
       end.page params[:page]
     end
 

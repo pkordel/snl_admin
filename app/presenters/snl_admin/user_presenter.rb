@@ -42,15 +42,11 @@ module SnlAdmin
     end
 
     def city
-      "#{user.postal_address}<br>".html_safe if user.postal_address.present?
-    end
-
-    def license_name
-      "#{License.model_name.human}: #{user.license.name.humanize}"
+      "#{ user.postal_address }<br>".html_safe if user.postal_address.present?
     end
 
     def ceiling
-      "#{SnlAdmin.user_class.human_attribute_name(:fixed_ceiling)}: #{user.fixed_ceiling}"
+      "#{ SnlAdmin.user_class.human_attribute_name(:fixed_ceiling) }: #{ user.fixed_ceiling }"
     end
 
     def characters_changed
@@ -63,13 +59,13 @@ module SnlAdmin
 
     def paid_to_date
       paid = number_to_currency(user.paid_to_date.to_i)
-      "#{SnlAdmin.user_class.human_attribute_name(:paid_to_date)}: #{paid}"
+      "#{ SnlAdmin.user_class.human_attribute_name(:paid_to_date) }: #{ paid }"
     end
 
     def unpaid_balance
       earnings = PayCalculator.earnings_for(user).to_i
       unpaid_balance = number_to_currency(earnings - user.paid_to_date.to_i)
-      "#{I18n.t(:unpaid_balance, year: Date.today.year)}: #{unpaid_balance}"
+      "#{ I18n.t(:unpaid_balance, year: Date.today.year) }: #{ unpaid_balance }"
     end
   end
 end

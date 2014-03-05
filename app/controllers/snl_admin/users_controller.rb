@@ -10,10 +10,10 @@ module SnlAdmin
       @users = if params[:query]
         term = params[:query].strip
         conditions = "username ILIKE ? OR firstname ILIKE ? OR lastname ILIKE ?"
-        User.where(conditions, "%#{term}%", "%#{term}%", "%#{term}%").
-             order('firstname asc')
+        SnlAdmin.user_class.where(conditions, "%#{term}%", "%#{term}%", "%#{term}%").
+                            order('firstname asc')
       else
-        User.order('firstname asc')
+        SnlAdmin.user_class.order('firstname asc')
       end.page params[:page]
     end
 

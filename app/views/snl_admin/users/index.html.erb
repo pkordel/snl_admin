@@ -23,12 +23,12 @@
 <table class="table table-striped table-bordered table-condensed table-hover">
   <thead>
     <tr>
-      <th><%= User.human_attribute_name(:firstname) %></th>
-      <th><%= User.human_attribute_name(:lastname) %></th>
-      <th><%= User.human_attribute_name(:username) %></th>
-      <th><%= User.human_attribute_name(:public_name) %></th>
-      <th><%= User.human_attribute_name(:role) %></th>
-      <th><%= User.human_attribute_name(:activated) %></th>
+      <th><%= SnlAdmin.user_class.human_attribute_name(:firstname) %></th>
+      <th><%= SnlAdmin.user_class.human_attribute_name(:lastname) %></th>
+      <th><%= SnlAdmin.user_class.human_attribute_name(:username) %></th>
+      <th><%= SnlAdmin.user_class.human_attribute_name(:public_name) %></th>
+      <th><%= SnlAdmin.user_class.human_attribute_name(:role) %></th>
+      <th><%= SnlAdmin.user_class.human_attribute_name(:activated) %></th>
       <th><%= t(:confirmed) %></th>
       <th></th>
       <th></th>
