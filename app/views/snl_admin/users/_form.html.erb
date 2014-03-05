@@ -29,6 +29,9 @@
     </div>
 
     <div class='control-group'>
+      <%= f.label :email_address,
+                  SnlAdmin.user_class.human_attribute_name(:email_address),
+                  class: 'control-label' %>
       <div class='controls'>
         <%= f.text_field :email_address,
                          placeholder: SnlAdmin.user_class.human_attribute_name(:email_address) %>
@@ -56,16 +59,6 @@
       <div class='controls'>
         <%= f.text_field :mobilenumber,
                          placeholder: SnlAdmin.user_class.human_attribute_name(:mobilenumber) %>
-      </div>
-    </div>
-
-    <div class='control-group'>
-      <%= f.label :license_id,
-                  License.model_name.human,
-                  class: 'control-label' %>
-      <div class='controls'>
-        <%= f.collection_select :license_id,
-                                License.all, :id, :name %>
       </div>
     </div>
 
@@ -115,17 +108,6 @@
       <div class='controls'>
         <%= f.text_field :postal_address,
                          placeholder: SnlAdmin.user_class.human_attribute_name(:postal_address) %>
-      </div>
-    </div>
-
-    <div class='control-group'>
-      <%= f.label :institution_code,
-                  SnlAdmin.user_class.human_attribute_name(:institution_code),
-                  class: 'control-label' %>
-      <div class='controls'>
-        <%= f.collection_select :institution_code, Institution.all.map{ |i| i.code },
-                                :to_s, :upcase,
-                                include_blank: true %>
       </div>
     </div>
 
