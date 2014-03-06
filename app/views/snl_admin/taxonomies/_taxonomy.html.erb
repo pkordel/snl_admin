@@ -1,0 +1,18 @@
+<dl>
+  <dt><%= SnlAdmin.taxonomy_class.human_attribute_name(:id) %></dt>
+  <dd><%= taxonomy.id %></dd>
+
+  <%- unless taxonomy.root? -%>
+  <dt><%= SnlAdmin.taxonomy_class.human_attribute_name(:parent) %></dt>
+  <dd><%= taxonomy.parents_path %></dd>
+  <%- end -%>
+
+  <dt><%= SnlAdmin.taxonomy_class.human_attribute_name(:title) %></dt>
+  <dd><%= taxonomy.title %></dd>
+
+  <dt><%= SnlAdmin.taxonomy_class.human_attribute_name(:position) %></dt>
+  <dd><%= taxonomy.position %></dd>
+
+  <dt><%= SnlAdmin.taxonomy_class.human_attribute_name(:description) %></dt>
+  <dd><%= taxonomy.description %></dd>
+</dl>

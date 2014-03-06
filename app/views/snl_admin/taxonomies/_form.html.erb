@@ -1,0 +1,67 @@
+<%= form_for(taxonomy, html: { class: 'form-horizontal' }) do |f| %>
+  <legend><%= @title %></legend>
+  <fieldset>
+
+    <% if taxonomy.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= t('errors.template.body') %></h2>
+
+        <ul>
+        <% taxonomy.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class='control-group'>
+      <%= f.label :title,
+                  SnlAdmin.taxonomy_class.human_attribute_name(:title),
+                  class: 'control-label' %>
+      <div class='controls'>
+        <%= f.text_field :title,
+                          required: true,
+                          placeholder: SnlAdmin.taxonomy_class.human_attribute_name(:title) %>
+      </div>
+    </div>
+
+    <div class='control-group'>
+      <%= f.label :parent,
+                  SnlAdmin.taxonomy_class.human_attribute_name(:parent),
+                  class: 'control-label' %>
+      <div class='controls'>
+        <%= f.select :parent_id,
+            collection_for_parent_id(taxonomy),
+            include_blank: t('parent_prompt') %>
+      </div>
+    </div>
+
+    <div class='control-group'>
+      <%= f.label :pos_level,
+                  SnlAdmin.taxonomy_class.human_attribute_name(:position),
+                  class: 'control-label' %>
+      <div class='controls'>
+        <%= f.number_field :position,
+            required: true,
+            placeholder: SnlAdmin.taxonomy_class.human_attribute_name(:position) %>
+      </div>
+    </div>
+
+    <div class='control-group'>
+      <%= f.label :description,
+                  SnlAdmin.taxonomy_class.human_attribute_name(:description),
+                  class: 'control-label' %>
+      <div class='controls'>
+        <%= f.text_area :description,
+            placeholder: SnlAdmin.taxonomy_class.human_attribute_name(:description),
+            rows: 5 %>
+      </div>
+    </div>
+
+    <div class="form-actions">
+      <%= f.submit t('save'), class: 'btn btn-primary' %>
+      <%= link_to t('cancel'), taxonomies_path, class: 'btn' %>
+    </div>
+
+  </fieldset>
+<%- end -%>
