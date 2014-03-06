@@ -2,6 +2,12 @@ en:
   dashboard: Dashboard
   home: Home
   users: Users
+  redirections: Redirections
+  taxonomies: Taxonomies
+  parent_prompt: Top level
+  show: Show
+  edit: Edit
+  delete: Delete
   save: Save
   cancel: Cancel
   edit_user: Edit user
