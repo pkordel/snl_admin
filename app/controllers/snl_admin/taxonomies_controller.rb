@@ -47,8 +47,12 @@ module SnlAdmin
     end
 
     def destroy
-      @taxonomy.destroy
-      notice = t('destroy_taxonomy')
+      unless @taxonomy.has_children?
+        @taxonomy.destroy
+        notice = t('destroy_taxonomy')
+      else
+        notice = t('destroy_taxonomy_forbidden')
+      end
       redirect_to taxonomies_path, notice: notice
     end
 
@@ -66,7 +70,32 @@ module SnlAdmin
     end
 
     def taxonomy_params
-      params.require(:taxonomy).permit(:title)
+      params.require(:taxonomy).permit(:title,
+                                       :parent_id,
+                                       :position,
+                                       :description)
+    end
+
+    def collection_for_parent_id record
+      record_id = record.id || 0
+      ancestry_options(
+        Taxonomy.scoped.where("id != ?", record_id).
+                 select([:id, :title, :ancestry, :position]).
+                 arrange(order: 'ancestry, position'))
+    end
+    helper_method :collection_for_parent_id
+
+    def ancestry_options(nodes, string = nil)
+      array = []
+      nodes.each do |node, children|
+        array << [format_string(string, node), node.id]
+        array.concat(ancestry_options(children, format_string(string, node))) if children.size > 0
+      end
+      array
+    end
+
+    def format_string(string, node)
+      [string, "(#{node.position}) #{node.title}"].compact.join(" | ")
     end
   end
 end
