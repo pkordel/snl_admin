@@ -39,75 +39,12 @@
     </div>
 
     <div class='control-group'>
-      <div class='controls'>
-        <%= f.password_field :password,
-                             placeholder: SnlAdmin.user_class.human_attribute_name(:password) %>
-      </div>
-    </div>
-
-    <div class='control-group'>
       <%= f.label :role,
                   SnlAdmin.user_class.human_attribute_name(:role),
                   class: 'control-label' %>
       <div class='controls'>
         <%= f.collection_select :role, SnlAdmin.user_class::ROLES,
                                 :to_s, :humanize %>
-      </div>
-    </div>
-
-    <div class='control-group'>
-      <div class='controls'>
-        <%= f.text_field :mobilenumber,
-                         placeholder: SnlAdmin.user_class.human_attribute_name(:mobilenumber) %>
-      </div>
-    </div>
-
-    <div class='control-group'>
-      <%= f.label :email_notifications, class: 'checkbox control-label' do %>
-          <div class='controls'><%= f.check_box :email_notifications %> <%= SnlAdmin.user_class.human_attribute_name(:email_notifications) %></div>
-        <% end %>
-    </div>
-
-    <div class='control-group'>
-      <%= f.label :fixed_ceiling,
-                  SnlAdmin.user_class.human_attribute_name(:fixed_ceiling),
-                  class: 'control-label' %>
-      <div class='controls'>
-        <%= f.text_field :fixed_ceiling,
-                         placeholder: SnlAdmin.user_class.human_attribute_name(:fixed_ceiling) %>
-      </div>
-    </div>
-
-    <div class='control-group'>
-      <%= f.label :paid_to_date,
-                  SnlAdmin.user_class.human_attribute_name(:paid_to_date),
-                  class: 'control-label' %>
-      <div class='controls'>
-        <%= f.text_field :paid_to_date,
-                         placeholder: SnlAdmin.user_class.human_attribute_name(:paid_to_date) %>
-      </div>
-    </div>
-
-    <div class='control-group'>
-      <%= f.label :activated, class: 'checkbox control-label' do %>
-        <div class='controls'>
-          <%= f.check_box :activated %> <%= SnlAdmin.user_class.human_attribute_name(:activated) %>
-        </div>
-      <% end %>
-    </div>
-
-    <div class='control-group'>
-      <%= label_tag :confirmed, class: 'checkbox control-label' do %>
-        <div class='controls'>
-          <%= check_box_tag :confirmed, 'yes', @user.confirmed? %> <%= t('confirmed') %>
-        </div>
-      <% end %>
-    </div>
-
-    <div class='control-group'>
-      <div class='controls'>
-        <%= f.text_field :postal_address,
-                         placeholder: SnlAdmin.user_class.human_attribute_name(:postal_address) %>
       </div>
     </div>
 

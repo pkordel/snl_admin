@@ -1,7 +1,8 @@
 <h1><%= taxonomy.title %></h1>
 
 <div class='row'>
-  <div class='span2'>
+  <div class='span4'>
+    <%= render partial: 'taxonomy', locals: { taxonomy: taxonomy } %>
     <%= link_to t('edit'), edit_taxonomy_path(taxonomy), class: 'btn btn-primary' %>
   </div>
 </div>

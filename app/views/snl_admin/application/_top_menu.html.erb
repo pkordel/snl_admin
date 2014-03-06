@@ -7,7 +7,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <%= link_to 'SNL Admin', main_app.admin_url, class: 'brand' %>
+      <%= link_to 'SNL Admin', '#', class: 'brand' %>
       <div class="nav-collapse collapse">
         <ul class="nav">
           <li><%= link_to t(:home), main_app.root_url %></li>
@@ -15,16 +15,6 @@
           <%= nav_link :users, name: t(:users) %>
           <%= nav_link :redirections, name: t(:redirections) %>
           <%= nav_link :taxonomies, name: t(:taxonomies) %>
-          <%- if current_user -%>
-            <li>
-              <%= link_to "#{t(:sign_out)} #{current_user.username}",
-                          main_app.logout_path %>
-            </li>
-          <%- else -%>
-            <li>
-              <%= link_to t(:sign_in), main_app.login_path %>
-            </li>
-          <%- end -%>
         </ul>
       </div><!--/.nav-collapse -->
     </div>

@@ -1,10 +1,11 @@
 <address>
   <strong><%= @user.public_name %></strong><br>
   <%= @user.role_name %><br>
+  <%= mail_to @user.email_address %><br>
 </address>
 
 <div class='row'>
-  <div class='span2'>
+  <div class='span1'>
     <%= link_to t('edit'), edit_user_path(@user), class: 'btn btn-primary' %>
   </div>
 </div>

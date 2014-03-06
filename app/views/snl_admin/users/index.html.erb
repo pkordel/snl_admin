@@ -25,11 +25,8 @@
     <tr>
       <th><%= SnlAdmin.user_class.human_attribute_name(:firstname) %></th>
       <th><%= SnlAdmin.user_class.human_attribute_name(:lastname) %></th>
-      <th><%= SnlAdmin.user_class.human_attribute_name(:username) %></th>
-      <th><%= SnlAdmin.user_class.human_attribute_name(:public_name) %></th>
+      <th><%= SnlAdmin.user_class.human_attribute_name(:email_address) %></th>
       <th><%= SnlAdmin.user_class.human_attribute_name(:role) %></th>
-      <th><%= SnlAdmin.user_class.human_attribute_name(:activated) %></th>
-      <th><%= t(:confirmed) %></th>
       <th></th>
       <th></th>
       <th></th>
@@ -40,11 +37,8 @@
     <tr>
       <td><%= user.firstname %></td>
       <td><%= user.lastname %></td>
-      <td><%= user.username %></td>
-      <td><%= user.public_name %></td>
+      <td><%= user.email_address %></td>
       <td><%= t(user.role).humanize %></td>
-      <td><%= user.activated? ? t(:yay) : t(:nope) %></td>
-      <td><%= user.confirmed? ? t(:yay) : t(:nope) %></td>
       <td><%= link_to t(:show), user,
               class: 'btn btn-mini btn-info' %></td>
       <td><%= link_to t(:edit), edit_user_path(user),
