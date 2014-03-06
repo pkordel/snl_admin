@@ -24,14 +24,13 @@ Gem::Specification.new do |spec|
 
   spec.add_dependency 'rails', '~> 3.2.17'
   spec.add_dependency 'jquery-rails'
+  spec.add_dependency 'sass-rails'
+  spec.add_dependency 'strong_parameters'
   spec.add_dependency 'chartkick'
   spec.add_dependency 'kaminari'
   spec.add_dependency 'bootstrap-kaminari-views'
   spec.add_dependency 'pg'
   spec.add_dependency 'activerecord-postgres-hstore'
-  spec.add_dependency 'sass-rails'
-  spec.add_dependency 'coffee-rails'
-  spec.add_dependency 'uglifier'
 
   spec.add_development_dependency 'bundler',  '~> 1.3'
   spec.add_development_dependency 'rake'
