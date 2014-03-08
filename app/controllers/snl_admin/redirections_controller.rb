@@ -54,9 +54,10 @@ module SnlAdmin
     private
 
     def redirection_params
-      valid_params = params.require(:redirection).
-             permit(:permalink, :to_permalink, :from_encyclopedia_id, :to_encyclopedia_id)
-      valid_params
+      params.require(:redirection).permit(:permalink,
+                                          :to_permalink,
+                                          :from_encyclopedia_id,
+                                          :to_encyclopedia_id)
     end
 
     def set_redirection
@@ -64,6 +65,11 @@ module SnlAdmin
         SnlAdmin.redirection_class.find(params[:id]) :
         SnlAdmin.redirection_class.new()
     end
+
+    def redirection
+      @redirection
+    end
+    helper_method :redirection
 
   end
 end

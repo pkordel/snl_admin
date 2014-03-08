@@ -11,7 +11,22 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140306080557) do
+ActiveRecord::Schema.define(:version => 20140308112935) do
+
+  create_table "encyclopedia", :force => true do |t|
+    t.string   "system_name"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  create_table "redirections", :force => true do |t|
+    t.integer  "from_encyclopedia_id"
+    t.string   "permalink"
+    t.integer  "to_encyclopedia_id"
+    t.string   "to_permalink"
+    t.datetime "created_at",           :null => false
+    t.datetime "updated_at",           :null => false
+  end
 
   create_table "taxonomies", :force => true do |t|
     t.string   "title"

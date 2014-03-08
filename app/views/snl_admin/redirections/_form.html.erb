@@ -1,53 +1,56 @@
-<%= form_for(@redirection, html: { class: 'form-horizontal' }) do |f| %>
+<%= form_for(redirection, html: { role: 'form' }) do |f| %>
   <legend><%= @title %></legend>
   <fieldset>
 
-    <% if @redirection.errors.any? %>
+    <% if redirection.errors.any? %>
       <div id="error_explanation">
         <h2><%= t('errors.template.body') %></h2>
-
         <ul>
-        <% @redirection.errors.full_messages.each do |msg| %>
+        <% redirection.errors.full_messages.each do |msg| %>
           <li><%= msg %></li>
         <% end %>
         </ul>
       </div>
     <% end %>
 
-    <div class='control-group'>
-      <div class='controls'>
-        <%= f.select :from_encyclopedia_id, Encyclopedia.all.collect {|e| [e.system_name, e.id] } %>
-      </div>
+    <div class='form-group'>
+      <%= f.label :from_encyclopedia_id,
+                  SnlAdmin.redirection_class.human_attribute_name(:from_encyclopedia_id) %>
+      <%= f.select :from_encyclopedia_id,
+                   Encyclopedia.all.collect {|e| [e.system_name, e.id] }, {},
+                   { class: 'form-control' } %>
     </div>
 
-    <div class='control-group'>
-      <div class='controls'>
-        <%= f.text_field :permalink,
-                          placeholder: SnlAdmin.redirection_class.human_attribute_name(:permalink) %>
-        <i class="icon-backward decode" data-decode-selector="input#redirection_permalink"></i>
-        <i class="icon-forward encode" data-encode-selector="input#redirection_permalink"></i>
-      </div>
+    <div class='form-group'>
+      <%= f.label :permalink,
+                  SnlAdmin.redirection_class.human_attribute_name(:permalink) %>
+      <%= f.text_field :permalink,
+                        class: 'form-control',
+                        placeholder: SnlAdmin.redirection_class.human_attribute_name(:permalink) %>
+      <i class="icon-backward decode" data-decode-selector="input#redirection_permalink"></i>
+      <i class="icon-forward encode" data-encode-selector="input#redirection_permalink"></i>
     </div>
 
-    <div class='control-group'>
-      <div class='controls'>
-        <%= f.select :to_encyclopedia_id, Encyclopedia.all.collect {|e| [e.system_name, e.id] } %>
-      </div>
+    <div class='form-group'>
+      <%= f.label :to_encyclopedia_id,
+                  SnlAdmin.redirection_class.human_attribute_name(:to_encyclopedia_id) %>
+      <%= f.select :to_encyclopedia_id,
+                    Encyclopedia.all.collect {|e| [e.system_name, e.id] }, {},
+                    { class: 'form-control' } %>
     </div>
 
-    <div class='control-group'>
-      <div class='controls'>
-        <%= f.text_field :to_permalink,
-                          placeholder: SnlAdmin.redirection_class.human_attribute_name(:to_permalink) %>
-        <i class="icon-backward decode" data-decode-selector="input#redirection_to_permalink"></i>
-        <i class="icon-forward encode" data-encode-selector="input#redirection_to_permalink"></i>
-      </div>
-    </div>        
-
-    <div class="form-actions">
-      <%= f.submit t('save'), class: 'btn btn-primary' %>
-      <%= link_to t('cancel'), redirections_path, class: 'btn' %>
+    <div class='form-group'>
+      <%= f.label :to_permalink,
+                  SnlAdmin.redirection_class.human_attribute_name(:to_permalink) %>
+      <%= f.text_field :to_permalink,
+                        class: 'form-control',
+                        placeholder: SnlAdmin.redirection_class.human_attribute_name(:to_permalink) %>
+      <i class="icon-backward decode" data-decode-selector="input#redirection_to_permalink"></i>
+      <i class="icon-forward encode" data-encode-selector="input#redirection_to_permalink"></i>
     </div>
+
+    <%= f.submit t('save'), class: 'btn btn-primary' %>
+    <%= link_to t('cancel'), redirections_path, class: 'btn btn-default' %>
 
   </fieldset>
 <%- end -%>

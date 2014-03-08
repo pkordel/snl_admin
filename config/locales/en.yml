@@ -4,25 +4,31 @@ en:
   users: Users
   redirections: Redirections
   taxonomies: Taxonomies
-  parent_prompt: Top level
+
   show: Show
   edit: Edit
   delete: Delete
   save: Save
   cancel: Cancel
+
   edit_user: Edit user
   new_user: New user
-  edit_taxonomy: Edit taxonomy
-  new_taxonomy: New taxonomy
-  destroy_taxonomy: Taxonomy was deleted
-  edit_redirection: Edit redirection
-  destroy_redirection: Redirection was deleted
-  destroy_taxonomy_forbidden: "This operation is not permitted"
-  are_you_sure: Are you sure?
   confirmed: Confirmed
   unconfirmed: Unconfirmed
   active: Active
   inactive: Inactive
+
+  new_taxonomy: New taxonomy
+  edit_taxonomy: Edit taxonomy
+  parent_prompt: Top level
+  destroy_taxonomy: Taxonomy was deleted
+  destroy_taxonomy_forbidden: "This operation is not permitted"
+
+  new_redirection: New redirection
+  edit_redirection: Edit redirection
+  destroy_redirection: Redirection was deleted
+
+  are_you_sure: Are you sure?
   published: Published
   authorized: Authorized
   draft: Draft
@@ -31,7 +37,7 @@ en:
   sub_editor: Subeditor
   contributor: Contributor
   bughunter: Bughunter
-  users: Users
+
   yay: Yes
   nope: No
   sign_in: Sign in

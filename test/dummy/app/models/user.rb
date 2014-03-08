@@ -6,6 +6,8 @@ class User < ActiveRecord::Base
   EDITOR        = 'editor'
   CONTRIBUTOR   = 'contributor'
 
+  validates_presence_of :firstname, :lastname, :email_address
+
   def public_name
     (self.firstname.to_s + ' ' + self.lastname).strip
   end

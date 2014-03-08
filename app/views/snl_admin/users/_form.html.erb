@@ -1,57 +1,51 @@
-<%= form_for(@user, html: { class: 'form-horizontal' }) do |f| %>
+<%= form_for(user, html: { role: 'form' }) do |f| %>
   <legend><%= @title %></legend>
   <fieldset>
 
-    <% if @user.errors.any? %>
+    <% if user.errors.any? %>
       <div id="error_explanation">
         <h2><%= t('errors.template.body') %></h2>
-
         <ul>
-        <% @user.errors.full_messages.each do |msg| %>
+        <% user.errors.full_messages.each do |msg| %>
           <li><%= msg %></li>
         <% end %>
         </ul>
       </div>
     <% end %>
 
-    <div class='control-group'>
-      <div class='controls'>
-        <%= f.text_field :firstname,
-                          placeholder: SnlAdmin.user_class.human_attribute_name(:firstname) %>
-      </div>
+    <div class='form-group'>
+      <%= f.label :firstname, SnlAdmin.user_class.human_attribute_name(:firstname) %>
+      <%= f.text_field :firstname,
+                       required: true,
+                       class: 'form-control',
+                       placeholder: SnlAdmin.user_class.human_attribute_name(:firstname) %>
     </div>
 
-    <div class='control-group'>
-      <div class='controls'>
-        <%= f.text_field :lastname,
-                          placeholder: SnlAdmin.user_class.human_attribute_name(:lastname) %>
-      </div>
+    <div class='form-group'>
+      <%= f.label :lastname, SnlAdmin.user_class.human_attribute_name(:lastname) %>
+      <%= f.text_field :lastname,
+                       required: true,
+                       class: 'form-control',
+                       placeholder: SnlAdmin.user_class.human_attribute_name(:lastname) %>
     </div>
 
-    <div class='control-group'>
-      <%= f.label :email_address,
-                  SnlAdmin.user_class.human_attribute_name(:email_address),
-                  class: 'control-label' %>
-      <div class='controls'>
-        <%= f.text_field :email_address,
-                         placeholder: SnlAdmin.user_class.human_attribute_name(:email_address) %>
-      </div>
+    <div class='form-group'>
+      <%= f.label :email_address, SnlAdmin.user_class.human_attribute_name(:email_address) %>
+      <%= f.text_field :email_address,
+                       required: true,
+                       class: 'form-control',
+                       placeholder: SnlAdmin.user_class.human_attribute_name(:email_address) %>
     </div>
 
-    <div class='control-group'>
-      <%= f.label :role,
-                  SnlAdmin.user_class.human_attribute_name(:role),
-                  class: 'control-label' %>
-      <div class='controls'>
-        <%= f.collection_select :role, SnlAdmin.user_class::ROLES,
-                                :to_s, :humanize %>
-      </div>
+    <div class='form-group'>
+      <%= f.label :role, SnlAdmin.user_class.human_attribute_name(:role) %>
+      <%= f.collection_select :role, SnlAdmin.user_class::ROLES,
+                              :to_s, :humanize, {},
+                              { class: 'form-control' } %>
     </div>
 
-    <div class="form-actions">
-      <%= f.submit t('save'), class: 'btn btn-primary' %>
-      <%= link_to t('cancel'), users_path, class: 'btn' %>
-    </div>
+    <%= f.submit t('save'), class: 'btn btn-primary' %>
+    <%= link_to t('cancel'), users_path, class: 'btn btn-default' %>
 
   </fieldset>
 <%- end -%>

@@ -14,8 +14,8 @@
                                   role: 'form' do %>
       <div class="form-group">
         <%= search_field_tag 'query', nil, placeholder: 'Søkeord', class: 'form-control' %>
+        <%= button_tag 'Søk', class: "btn btn-default" %>
       </div>
-      <%= button_tag 'Søk', class: "btn btn-default" %>
     <%- end -%>
   </div>
 </div>
@@ -37,13 +37,13 @@
         <td><%= taxonomy.ancestors.pluck(:title).join('/') %></td>
         <td><%= taxonomy.title %></td>
         <td><%= link_to t(:show), taxonomy,
-                class: 'btn btn-sm btn-info' %></td>
+                class: 'btn btn-xs btn-info' %></td>
         <td><%= link_to t(:edit), edit_taxonomy_path(taxonomy),
-                class: 'btn btn-sm btn-warning' %></td>
+                class: 'btn btn-xs btn-warning' %></td>
         <td><%= link_to(t(:delete), taxonomy,
                 method: :delete,
                 data: { confirm: t(:are_you_sure) },
-                class: "btn btn-sm btn-danger") %></td>
+                class: "btn btn-xs btn-danger") %></td>
       </tr>
     <%- end -%>
     </tbody>

@@ -18,7 +18,6 @@ module SnlAdmin
     end
 
     def show
-      @user = UserPresenter.new(@user)
     end
 
     def new
@@ -58,6 +57,11 @@ module SnlAdmin
         SnlAdmin.user_class.find(params[:id]) :
         SnlAdmin.user_class.new(role: 'contributor')
     end
+
+    def user
+      @decorated_user ||= UserPresenter.new(@user)
+    end
+    helper_method :user
 
     def user_params
       params.require(:user).permit(:firstname,

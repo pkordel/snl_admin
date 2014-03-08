@@ -1,10 +1,10 @@
 <address>
-  Fra <%= Encyclopedia.with_id(@redirection.from_encyclopedia_id).system_name %>, <strong><%= @redirection.permalink %></strong> til 
-  <%= Encyclopedia.with_id(@redirection.to_encyclopedia_id).system_name %>, <strong><%= @redirection.to_permalink %></strong><br>
+  Fra <%= Encyclopedia.with_id(redirection.from_encyclopedia_id).system_name %>, <strong><%= redirection.permalink %></strong> til
+  <%= Encyclopedia.with_id(redirection.to_encyclopedia_id).system_name %>, <strong><%= redirection.to_permalink %></strong><br>
 </address>
 
 <div class='row'>
-  <div class='span2'>
-    <%= link_to t('edit'), edit_redirection_path(@redirection), class: 'btn btn-primary' %>
+  <div class='col-md-1'>
+    <%= link_to t('edit'), edit_redirection_path(redirection), class: 'btn btn-primary' %>
   </div>
 </div>

@@ -8,11 +8,10 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">SNL Admin</a>
+      <%= link_to 'SNL Admin', main_app.root_url, class: 'navbar-brand' %>
     </div>
     <div class="collapse navbar-collapse">
       <ul class="nav navbar-nav">
-        <li><%= link_to t(:home), main_app.root_url %></li>
         <%= nav_link :dashboard, path: snl_admin.dashboard_path, name: t(:dashboard) %>
         <%= nav_link :users, name: t(:users) %>
         <%= nav_link :redirections, name: t(:redirections) %>
