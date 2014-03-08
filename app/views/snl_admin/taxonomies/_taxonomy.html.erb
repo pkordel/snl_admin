@@ -1,7 +1,4 @@
 <dl>
-  <dt><%= SnlAdmin.taxonomy_class.human_attribute_name(:id) %></dt>
-  <dd><%= taxonomy.id %></dd>
-
   <%- unless taxonomy.root? -%>
   <dt><%= SnlAdmin.taxonomy_class.human_attribute_name(:parent) %></dt>
   <dd><%= taxonomy.parents_path %></dd>
