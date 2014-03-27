@@ -18,6 +18,7 @@ SnlAdmin::Engine.routes.draw do
     member do
       get :submitted_articles
       get :draft_articles
+      get :statistics
     end
   end
 end
