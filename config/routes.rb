@@ -16,6 +16,7 @@ SnlAdmin::Engine.routes.draw do
   resources :taxonomies do
     get 'page/:page', :action => :index, :on => :collection
     member do
+      get :published_articles
       get :submitted_articles
       get :draft_articles
       get :statistics
