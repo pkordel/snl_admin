@@ -1,10 +1,11 @@
 module SnlAdmin
   class UserPresenter < SimpleDelegator
-    attr_reader :user
+    attr_reader :user, :template
 
-    def initialize(user)
+    def initialize(user, template)
       super(user)
-      @user = user
+      @template = template
+      @user     = user
     end
 
     def public_name

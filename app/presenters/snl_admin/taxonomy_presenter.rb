@@ -1,11 +1,11 @@
 module SnlAdmin
   class TaxonomyPresenter < SimpleDelegator
-    attr_reader :taxonomy, :context
+    attr_reader :taxonomy, :template
 
-    def initialize(taxonomy, context)
+    def initialize(taxonomy, template)
       super(taxonomy)
       @taxonomy = taxonomy
-      @context  = context
+      @template = template
     end
 
     def title
