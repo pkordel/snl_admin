@@ -59,7 +59,7 @@ module SnlAdmin
     end
 
     def user
-      @decorated_user ||= UserPresenter.new(@user)
+      @decorated_user ||= UserPresenter.new(@user, view_context)
     end
     helper_method :user
 
