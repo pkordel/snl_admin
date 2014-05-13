@@ -23,4 +23,8 @@ SnlAdmin::Engine.routes.draw do
       get :statistics
     end
   end
+
+  resources :activities, only: [:index] do
+    get 'page/:page', :action => :index, :on => :collection
+  end
 end
