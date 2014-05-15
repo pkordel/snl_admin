@@ -6,7 +6,7 @@ module SnlAdmin
   mattr_accessor :redirection_class
   mattr_accessor :license_class
   mattr_accessor :taxonomy_class
-  mattr_accessor :activity_class
+  mattr_accessor :revision_class
 
   def self.user_class
     @@user_class.constantize
@@ -25,6 +25,6 @@ module SnlAdmin
   end
 
   def self.activity_class
-    @@activity_class.constantize
+    @@revision_class.constantize
   end
 end

@@ -3,7 +3,7 @@
 require_dependency "snl_admin/application_controller"
 
 module SnlAdmin
-  class ActivitiesController < ApplicationController
+  class RevisionsController < ApplicationController
     def index
     end
   end

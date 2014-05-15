@@ -24,7 +24,8 @@ SnlAdmin::Engine.routes.draw do
     end
   end
 
-  resources :activities, only: [:index] do
+  resources :revisions, only: [:index, :revert] do
     get 'page/:page', :action => :index, :on => :collection
+    post "revisions/:id/revert" => "revisions#revert", :as => "revert_revision"
   end
 end
