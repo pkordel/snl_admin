@@ -24,7 +24,7 @@ module SnlAdmin
     @@taxonomy_class.constantize
   end
 
-  def self.activity_class
+  def self.revision_class
     @@revision_class.constantize
   end
 end
