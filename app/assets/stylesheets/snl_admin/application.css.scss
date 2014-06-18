@@ -56,5 +56,12 @@
  ul.changeset li span.from {
    float: left;
    width: 170px;
+   padding-right: 10px;
+   word-wrap: break-word;
  }
 
+ ul.changeset li span.to {
+   width: 170px;
+   padding-right: 10px;
+   word-wrap: break-word;
+ }
