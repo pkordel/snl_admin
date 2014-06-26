@@ -11,7 +11,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140308112935) do
+ActiveRecord::Schema.define(:version => 20140626041122) do
+
+  create_table "comments", :force => true do |t|
+    t.string   "subject"
+    t.text     "body"
+    t.integer  "created_by_id"
+    t.datetime "created_at"
+  end
 
   create_table "encyclopedia", :force => true do |t|
     t.string   "system_name"
