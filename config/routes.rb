@@ -30,4 +30,8 @@ SnlAdmin::Engine.routes.draw do
       post :revert
     end
   end
+
+  resources :comments do
+    get 'page/:page', :action => :index, :on => :collection
+  end
 end

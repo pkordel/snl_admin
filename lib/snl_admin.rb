@@ -7,6 +7,7 @@ module SnlAdmin
   mattr_accessor :license_class
   mattr_accessor :taxonomy_class
   mattr_accessor :revision_class
+  mattr_accessor :comment_class
 
   def self.user_class
     @@user_class.constantize
@@ -26,5 +27,9 @@ module SnlAdmin
 
   def self.revision_class
     @@revision_class.constantize
+  end
+
+  def self.comment_class
+    @@comment_class.constantize
   end
 end
