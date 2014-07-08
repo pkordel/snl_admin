@@ -1,0 +1,52 @@
+<%= form_for(taxonomy, html: { role: 'form' }) do |f| %>
+  <legend><%= @title %></legend>
+  <fieldset>
+
+    <% if taxonomy.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= t('errors.template.body') %></h2>
+        <ul>
+        <% taxonomy.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class='form-group'>
+      <%= f.label :title, SnlAdmin.taxonomy_class.human_attribute_name(:title) %>
+      <%= f.text_field :title,
+                        required: true,
+                        class: 'form-control',
+                        placeholder: SnlAdmin.taxonomy_class.human_attribute_name(:title) %>
+    </div>
+
+    <div class='form-group'>
+      <%= f.label :parent, SnlAdmin.taxonomy_class.human_attribute_name(:parent) %>
+      <%= f.select :parent_id,
+          collection_for_parent_id(taxonomy),
+          { include_blank: t('parent_prompt') },
+          { class: 'form-control' } %>
+    </div>
+
+    <div class='form-group'>
+      <%= f.label :pos_level, SnlAdmin.taxonomy_class.human_attribute_name(:position) %>
+      <%= f.number_field :position,
+          required: true,
+          class: 'form-control',
+          placeholder: SnlAdmin.taxonomy_class.human_attribute_name(:position) %>
+    </div>
+
+    <div class='form-group'>
+      <%= f.label :description, SnlAdmin.taxonomy_class.human_attribute_name(:description) %>
+      <%= f.text_area :description,
+          class: 'form-control',
+          placeholder: SnlAdmin.taxonomy_class.human_attribute_name(:description),
+          rows: 5 %>
+    </div>
+
+    <%= f.submit t('save'), class: 'btn btn-primary' %>
+    <%= link_to t('cancel'), taxonomies_path, class: 'btn btn-default' %>
+
+  </fieldset>
+<%- end -%>

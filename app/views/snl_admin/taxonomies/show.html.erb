@@ -1,0 +1,9 @@
+<h1><%= taxonomy.title %></h1>
+
+<div class='row'>
+  <div class='col-md-4'>
+    <%= render partial: 'taxonomy', locals: { taxonomy: taxonomy } %>
+    <%= link_to t('edit'), edit_taxonomy_path(taxonomy), class: 'btn btn-primary' %>
+    <%= link_to t('cancel'), taxonomies_path, class: 'btn btn-default' %>
+  </div>
+</div>

@@ -3,17 +3,17 @@ require_dependency "snl_admin/application_controller"
 
 module SnlAdmin
   class RedirectionsController < ApplicationController
-    before_filter :set_redirection
+    before_filter :set_redirection, except: [:index]
     respond_to :html
 
     def index
       @redirections = if params[:query]
         term = params[:query].strip
         conditions = "permalink ILIKE ? OR to_permalink ILIKE ?"
-        Redirection.where(conditions, "%#{term}%", "%#{term}%").
-             order('permalink asc')
+        SnlAdmin.redirection_class.where(conditions, "%#{term}%", "%#{term}%").
+                 order('permalink asc')
       else
-        Redirection.order('permalink asc')
+        SnlAdmin.redirection_class.order('permalink asc')
       end.page params[:page]
     end
 
@@ -22,7 +22,7 @@ module SnlAdmin
     end
 
     def edit
-      @title = t('edit_user')
+      @title = t('edit_redirection')
     end
 
     def show
@@ -47,16 +47,17 @@ module SnlAdmin
 
     def destroy
       @redirection.destroy
-      notice = "Slettet redirectionen"
+      notice = t('destroy_redirection')
       redirect_to redirections_path, notice: notice
     end
 
     private
 
     def redirection_params
-      valid_params = params.require(:redirection).
-             permit(:permalink, :to_permalink, :from_encyclopedia_id, :to_encyclopedia_id)
-      valid_params
+      params.require(:redirection).permit(:permalink,
+                                          :to_permalink,
+                                          :from_encyclopedia_id,
+                                          :to_encyclopedia_id)
     end
 
     def set_redirection
@@ -64,6 +65,11 @@ module SnlAdmin
         SnlAdmin.redirection_class.find(params[:id]) :
         SnlAdmin.redirection_class.new()
     end
+
+    def redirection
+      @redirection
+    end
+    helper_method :redirection
 
   end
 end

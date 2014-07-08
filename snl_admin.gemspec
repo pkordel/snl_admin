@@ -1,27 +1,35 @@
-$:.push File.expand_path("../lib", __FILE__)
+# coding: utf-8
+lib = File.expand_path('../lib', __FILE__)
+$LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 
 # Maintain your gem's version:
-require "snl_admin/version"
+require 'snl_admin/version'
 
 # Describe your gem and declare its dependencies:
-Gem::Specification.new do |s|
-  s.name        = "snl_admin"
-  s.version     = SnlAdmin::VERSION
-  s.authors     = ["Peter Kordel"]
-  s.email       = ["pkordel@gmail.com"]
-  s.homepage    = "http://pkordel.github.com"
-  s.summary     = "Summary of SnlAdmin."
-  s.description = "Description of SnlAdmin."
+Gem::Specification.new do |spec|
+  spec.name        = 'snl_admin'
+  spec.version     = SnlAdmin::VERSION
+  spec.platform    = Gem::Platform::RUBY
+  spec.authors     = ['Peter Kordel']
+  spec.email       = ['pkordel@gmail.com']
+  spec.homepage    = 'http://pkordel.github.com'
+  spec.description   = %q{This gem provides a simple admin interface.}
+  spec.summary       = %q{This gem provides a simple admin interface.}
+  spec.license       = 'MIT'
 
-  s.files = Dir["{app,config,db,lib}/**/*"] + ["MIT-LICENSE", "Rakefile", "README.rdoc"]
-  s.test_files = Dir["test/**/*"]
+  spec.files         = `git ls-files`.split($/)
+  spec.executables   = spec.files.grep(%r{^bin/}) { |f| File.basename(f) }
+  spec.test_files    = spec.files.grep(%r{^(test|spec|features)/})
+  spec.require_paths = ['lib']
 
-  s.add_dependency "rails", "~> 4.0.3"
-  s.add_dependency "jquery-rails"
-  s.add_dependency "chartkick"
-  s.add_dependency "kaminari"
-  s.add_dependency "bootstrap-kaminari-views"
+  spec.add_dependency 'rails', '~> 4.1.4'
+  spec.add_dependency 'jquery-rails'
+  spec.add_dependency 'chartkick'
+  spec.add_dependency 'kaminari'
+  spec.add_dependency 'bootstrap-kaminari-views'
 
-  s.add_development_dependency "pg"
+  spec.add_development_dependency 'pg'
+  spec.add_development_dependency 'bundler',  '~> 1.6'
+  spec.add_development_dependency 'rake'
 
 end

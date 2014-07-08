@@ -1,54 +1,63 @@
-<h1><%= t('redirections') %></h1>
+<div class="page-header">
+  <h1><%= t('redirections') %></h1>
+</div>
+
+<div class='col-md-12'>
+  <%= paginate @redirections, theme: 'twitter-bootstrap' %>
+</div>
 
 <div class='row'>
-  <div class='span2'>
+  <div class='col-md-6'>
     <%= link_to t(:new_redirection), new_redirection_path, class: 'btn btn-primary' %>
   </div>
-  <div class='span7'>
-    <%= paginate @redirections, theme: 'twitter-bootstrap' %>
-  </div>
-  <div class='span3'>
-    <%= form_tag redirections_path, method: :get, class: 'form-search' do %>
-      <div class="input-append">
-        <%= search_field_tag 'query', nil, placeholder: 'Søkeord', class: "span2 search-query"%>
-        <%= button_tag 'Søk', class: "btn"%>
+  <div class='col-md-6'>
+    <%= form_tag redirections_path, method: :get,
+                                    class: 'form-inline pull-right',
+                                    role: 'form' do %>
+      <div class="form-group">
+        <%= search_field_tag 'query', nil, placeholder: 'Søkeord', class: 'form-control' %>
+        <%= button_tag 'Søk', class: 'btn btn-default' %>
+        <i class="icon-backward decode" data-decode-selector="input#query"></i>
+        <i class="icon-forward encode" data-encode-selector="input#query"></i>
       </div>
     <%- end -%>
   </div>
 </div>
 
-<table class="table table-striped table-bordered table-condensed table-hover">
-  <thead>
-    <tr>
-      <th><%= Redirection.human_attribute_name(:from_encyclopedia_id) %></th>
-      <th><%= Redirection.human_attribute_name(:permalink) %></th>
-      <th><%= Redirection.human_attribute_name(:to_encyclopedia_id) %></th>
-      <th><%= Redirection.human_attribute_name(:to_permalink) %></th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-  <%- @redirections.each do |redirection| -%>
-    <tr>
-      <td><%= Encyclopedia.with_id(redirection.from_encyclopedia_id).system_name %></td>
-      <td><%= redirection.permalink %></td>
-      <td><%= Encyclopedia.with_id(redirection.to_encyclopedia_id).system_name %></td>
-      <td><%= redirection.to_permalink %></td>
-      <td><%= link_to t(:show), redirection,
-              class: 'btn btn-mini btn-info' %></td>
-      <td><%= link_to t(:edit), edit_redirection_path(redirection),
-              class: 'btn btn-mini btn-warning' %></td>
-      <td><%= link_to(t(:delete), redirection,
-              method: :delete,
-              data: { confirm: t(:are_you_sure) },
-              class: "btn btn-mini btn-danger") %></td>
-    </tr>
-  <%- end -%>
-  </tbody>
-</table>
+<%- unless @redirections.blank? -%>
+  <table class="table table-striped table-bordered table-condensed table-hover">
+    <thead>
+      <tr>
+        <th><%= Redirection.human_attribute_name(:from_encyclopedia_id) %></th>
+        <th><%= Redirection.human_attribute_name(:permalink) %></th>
+        <th><%= Redirection.human_attribute_name(:to_encyclopedia_id) %></th>
+        <th><%= Redirection.human_attribute_name(:to_permalink) %></th>
+        <th></th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+    <%- @redirections.each do |redirection| -%>
+      <tr>
+        <td><%= Encyclopedia.with_id(redirection.from_encyclopedia_id).system_name %></td>
+        <td><%= redirection.permalink %></td>
+        <td><%= Encyclopedia.with_id(redirection.to_encyclopedia_id).system_name %></td>
+        <td><%= redirection.to_permalink %></td>
+        <td><%= link_to t(:show), redirection,
+                class: 'btn btn-xs btn-info' %></td>
+        <td><%= link_to t(:edit), edit_redirection_path(redirection),
+                class: 'btn btn-xs btn-warning' %></td>
+        <td><%= link_to(t(:delete), redirection,
+                method: :delete,
+                data: { confirm: t(:are_you_sure) },
+                class: "btn btn-xs btn-danger") %></td>
+      </tr>
+    <%- end -%>
+    </tbody>
+  </table>
+<%- end -%>
 
-<div class='span12'>
+<div class='col-md-12'>
   <%= paginate @redirections, theme: 'twitter-bootstrap' %>
 </div>

@@ -8,6 +8,8 @@
  * You're free to add application-wide styles to this file and they'll appear at the top of the
  * compiled file, but it's generally better to create a new file per style scope.
  *
+ *= require_self
+ *= require_tree .
  */
 
  @charset "UTF-8";
@@ -16,7 +18,50 @@
     padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
  }
 
- @import "bootstrap.min";
- @import "bootstrap-responsive.min";
- @import "dashboard";
- @import "users";
+ ul.revisions {
+   list-style-type: none;
+   padding-left: 0px;
+ }
+
+ ul.revisions li span.time {
+   color: #bbb;
+   font-size: 12px;
+ }
+
+ ul.revisions li span.title {
+   font-size: 14px;
+   font-weight: bold;
+ }
+
+ div.all-revisions a {
+   font-weight: bold;
+   text-transform: uppercase;
+   padding-bottom: 50px;
+ }
+
+ ul.revisions li:last-child {
+   padding-bottom: 15px;
+ }
+
+ ul.changeset {
+   list-style-type: none;
+   padding-left: 25px;
+ }
+
+ ul.changeset li span.key {
+   float: left;
+   width: 130px;
+ }
+
+ ul.changeset li span.from {
+   float: left;
+   width: 170px;
+   padding-right: 10px;
+   word-wrap: break-word;
+ }
+
+ ul.changeset li span.to {
+   width: 170px;
+   padding-right: 10px;
+   word-wrap: break-word;
+ }
