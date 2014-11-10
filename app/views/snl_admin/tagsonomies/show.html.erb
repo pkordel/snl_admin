@@ -1,0 +1,9 @@
+<h1><%= tagsonomy.title %></h1>
+
+<div class='row'>
+  <div class='col-md-4'>
+    <%= render partial: 'tagsonomy', locals: { tagsonomy: tagsonomy } %>
+    <%= link_to t('edit'), edit_tagsonomy_path(tagsonomy), class: 'btn btn-primary' %>
+    <%= link_to t('cancel'), tagsonomies_path, class: 'btn btn-default' %>
+  </div>
+</div>

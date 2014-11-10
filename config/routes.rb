@@ -24,6 +24,10 @@ SnlAdmin::Engine.routes.draw do
     end
   end
 
+  resources :tagsonomies do
+    get 'page/:page', :action => :index, :on => :collection
+  end
+
   resources :revisions, only: [:index, :revert] do
     get 'page/:page', :action => :index, :on => :collection
     member do
