@@ -22,7 +22,7 @@ Gem::Specification.new do |spec|
   spec.test_files    = spec.files.grep(%r{^(test|spec|features)/})
   spec.require_paths = ['lib']
 
-  spec.add_dependency 'rails', '~> 4.1.4'
+  spec.add_dependency 'rails', '~> 4.1.7'
   spec.add_dependency 'jquery-rails'
   spec.add_dependency 'chartkick'
   spec.add_dependency 'kaminari'
