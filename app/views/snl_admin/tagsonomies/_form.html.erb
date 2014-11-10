@@ -1,0 +1,44 @@
+<%= form_for(tagsonomy, html: { role: 'form' }) do |f| %>
+  <legend><%= @title %></legend>
+  <fieldset>
+
+    <% if tagsonomy.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= t('errors.template.body') %></h2>
+        <ul>
+        <% tagsonomy.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class='form-group'>
+      <%= f.label :title, SnlAdmin.tagsonomy_class.human_attribute_name(:title) %>
+      <%= f.text_field :title,
+                        required: true,
+                        class: 'form-control',
+                        placeholder: SnlAdmin.tagsonomy_class.human_attribute_name(:title) %>
+    </div>
+
+    <div class='form-group'>
+      <%= f.label :parent, SnlAdmin.tagsonomy_class.human_attribute_name(:parent) %>
+      <%= f.select :parent_id,
+          collection_for_parent_id(tagsonomy),
+          { include_blank: t('parent_prompt') },
+          { class: 'form-control' } %>
+    </div>
+
+    <div class='form-group'>
+      <%= f.label :type, SnlAdmin.taxonomy_class.human_attribute_name(:type) %>
+      <%= f.text_field :type,
+          required: true,
+          class: 'form-control',
+          placeholder: SnlAdmin.taxonomy_class.human_attribute_name(:type) %>
+    </div>
+
+    <%= f.submit t('save'), class: 'btn btn-primary' %>
+    <%= link_to t('cancel'), tagsonomies_path, class: 'btn btn-default' %>
+
+  </fieldset>
+<%- end -%>

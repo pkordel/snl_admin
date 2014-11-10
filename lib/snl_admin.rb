@@ -6,6 +6,7 @@ module SnlAdmin
   mattr_accessor :redirection_class
   mattr_accessor :license_class
   mattr_accessor :taxonomy_class
+  mattr_accessor :tagsonomy_class
   mattr_accessor :revision_class
   mattr_accessor :comment_class
 
@@ -23,6 +24,10 @@ module SnlAdmin
 
   def self.taxonomy_class
     @@taxonomy_class.constantize
+  end
+
+  def self.tagsonomy_class
+    @@tagsonomy_class.constantize
   end
 
   def self.revision_class

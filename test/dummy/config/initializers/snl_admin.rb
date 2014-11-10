@@ -1,4 +1,5 @@
 SnlAdmin.user_class         = "User"
 SnlAdmin.redirection_class  = "Redirection"
 SnlAdmin.taxonomy_class     = "Taxonomy"
+SnlAdmin.tagsonomy_class     = "Tagsonomy"
 SnlAdmin.comment_class      = "Comment"
