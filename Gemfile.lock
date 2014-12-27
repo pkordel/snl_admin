@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    snl_admin (0.1.1)
+    snl_admin (0.2.2)
       activerecord-postgres-hstore
       bootstrap-kaminari-views
       chartkick
@@ -105,7 +105,7 @@ GEM
     rake (10.3.2)
     rdoc (3.12.2)
       json (~> 1.4)
-    sass (3.4.7)
+    sass (3.4.9)
     sass-rails (3.2.6)
       railties (~> 3.2.0)
       sass (>= 3.1.10)
