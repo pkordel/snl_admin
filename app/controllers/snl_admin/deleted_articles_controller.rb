@@ -5,7 +5,10 @@ require_dependency "snl_admin/application_controller"
 module SnlAdmin
   class DeletedArticlesController < ApplicationController
     def index
-      @deleted_articles = SnlAdmin.deleted_articles_class.order('created_at desc').page params[:page]
+      @deleted_articles = SnlAdmin.deleted_article_class.recent.page params[:page]
+    end
+    def show
+      @deleted_article = SnlAdmin.deleted_article_class.find params[:id]
     end
   end
 end
