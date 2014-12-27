@@ -38,4 +38,8 @@ SnlAdmin::Engine.routes.draw do
   resources :comments do
     get 'page/:page', :action => :index, :on => :collection
   end
+
+  resources :deleted_articles do
+    get 'page/:page', :action => :index, :on => :collection
+  end
 end
