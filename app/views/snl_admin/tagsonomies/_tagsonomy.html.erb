@@ -1,7 +1,7 @@
 <dl>
   <%- unless tagsonomy.root? -%>
-  <dt><%= SnlAdmin.tagsonomy_class.human_attribute_name(:parent) %></dt>
-  <dd><%= tagsonomy.parents_path %></dd>
+  <dt><%= SnlAdmin.tagsonomy_class.human_attribute_name(:parents) %></dt>
+  <dd><%= tagsonomy.parents_title %></dd>
   <%- end -%>
 
   <dt><%= SnlAdmin.tagsonomy_class.human_attribute_name(:title) %></dt>

@@ -22,11 +22,11 @@
     </div>
 
     <div class='form-group'>
-      <%= f.label :parent, SnlAdmin.tagsonomy_class.human_attribute_name(:parent) %>
-      <%= f.select :parent_id,
+      <%= f.label :parents, SnlAdmin.tagsonomy_class.human_attribute_name(:parents) %>
+      <%= f.select :parent_ids,
           collection_for_parent_id(tagsonomy),
           { include_blank: t('parent_prompt') },
-          { class: 'form-control' } %>
+          { class: 'form-control', multiple: true } %>
     </div>
 
     <div class='form-group'>

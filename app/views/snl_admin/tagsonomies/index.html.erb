@@ -37,7 +37,7 @@
     <tbody>
     <%- @tagsonomies.each do |tagsonomy| -%>
       <tr>
-        <td><%= tagsonomy.ancestors.pluck(:title).join('/') %></td>
+        <td><%= tagsonomy.parents_title %></td>
         <td><%= tagsonomy.title %></td>
         <td><%= tagsonomy.type %></td>
         <td><%= link_to t(:show), tagsonomy,

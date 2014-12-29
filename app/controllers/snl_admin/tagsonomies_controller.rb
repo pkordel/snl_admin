@@ -70,27 +70,14 @@ module SnlAdmin
     end
 
     def tagsonomy_params
-      params.require(:tagsonomy).permit(:title,
-                                       :parent_id, :type)
+      params.require(:tagsonomy).permit(:title, :type, parent_ids: [])
     end
 
     def collection_for_parent_id record
       record_id = record.id || 0
-      ancestry_options(
-        Tagsonomy.scoped.where("id != ?", record_id).
-                 select([:id, :title, :ancestry, :type]).
-                 arrange(order: 'ancestry, type'))
+      Tagsonomy.where("id != ? AND type = ? ", record_id, record.type).collect {|t| [t.title, t.id] }
     end
     helper_method :collection_for_parent_id
-
-    def ancestry_options(nodes, string = nil)
-      array = []
-      nodes.each do |node, children|
-        array << [format_string(string, node), node.id]
-        array.concat(ancestry_options(children, format_string(string, node))) if children.size > 0
-      end
-      array
-    end
 
     def format_string(string, node)
       [string, "(#{node.type}) #{node.title}"].compact.join(" | ")
