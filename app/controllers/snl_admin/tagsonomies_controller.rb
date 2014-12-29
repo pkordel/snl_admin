@@ -70,7 +70,7 @@ module SnlAdmin
     end
 
     def tagsonomy_params
-      params.require(:tagsonomy).permit(:title, :type, parent_ids: [])
+      params.require(:tagsonomy).permit(:title, :type, :subtitle, parent_ids: [])
     end
 
     def collection_for_parent_id record
