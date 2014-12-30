@@ -39,7 +39,10 @@ SnlAdmin::Engine.routes.draw do
     get 'page/:page', :action => :index, :on => :collection
   end
 
-  resources :deleted_articles do
+  resources :deleted_articles, only: [:index, :show, :restore] do
     get 'page/:page', :action => :index, :on => :collection
+    member do
+      post :restore
+    end
   end
 end
