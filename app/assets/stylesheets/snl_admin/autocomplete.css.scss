@@ -1,0 +1,46 @@
+.ui-autocomplete {
+	display: block;
+	position: absolute;
+	left: 0;
+	cursor: default;
+	list-style: none;
+	margin: 0;
+	margin-top: -1px;	// Move up to cover the bottom box shadow of the input field
+	outline: none;
+	border-radius: 0 0 4px 4px;	// Same border radius as input[type="search"]
+	background: #f3f3f3;
+	border: 1px solid #cfcfcf;
+	border-top: none;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+.ui-autocomplete .ui-menu-item {
+	position: relative;
+	border-top: 1px solid #cfcfcf;
+}
+
+.ui-autocomplete a {
+	display: block;
+	color: black !important;
+	padding: 10px 15px 10px 10px;
+}
+
+.ui-autocomplete a:hover {
+	text-decoration: none !important;
+}
+
+.ui-autocomplete h2 {
+	font-weight: bold;
+}
+
+.ui-autocomplete p {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.ui-autocomplete .ui-state-focus {
+	background: #c2e4f1;
+}
