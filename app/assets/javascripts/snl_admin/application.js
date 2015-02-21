@@ -13,4 +13,5 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery-ui-1.10.3.custom.min
-//= require_tree .
+//= require snl_admin/bootstrap.min
+//= require snl_admin/redirections
