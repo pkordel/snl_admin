@@ -10,18 +10,20 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
       </button>
       <%= link_to 'SNL Admin', main_app.root_url, class: 'navbar-brand' %>
     </div>
     <div class="collapse navbar-collapse">
       <ul class="nav navbar-nav">
         <%= nav_link :dashboard, path: snl_admin.dashboard_path, name: t(:dashboard) %>
-        <%= nav_link :users,        name: t(:users) %>
-        <%= nav_link :redirections, name: t(:redirections) %>
-        <%= nav_link :taxonomies,   name: t(:taxonomies) %>
-        <%= nav_link :tagsonomies,   name: t(:tagsonomies) %>
-        <%= nav_link :revisions,    name: t(:revisions) %>
-        <%= nav_link :comments,     name: t(:comments) %>
+        <%= nav_link :users,            name: t(:users) %>
+        <%= nav_link :redirections,     name: t(:redirections) %>
+        <%= nav_link :taxonomies,       name: t(:taxonomies) %>
+        <%= nav_link :tagsonomies,      name: t(:tagsonomies) %>
+        <%= nav_link :revisions,        name: t(:revisions) %>
+        <%= nav_link :comments,         name: t(:comments) %>
+        <%= nav_link :deleted_articles, name: t(:deleted_articles) %>
       </ul>
     </div><!--/.nav-collapse -->
   </div>

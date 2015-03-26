@@ -1,5 +1,5 @@
 # -*- encoding : utf-8 -*-
-require_dependency "snl_admin/application_controller"
+require_dependency 'snl_admin/application_controller'
 
 module SnlAdmin
   class RedirectionsController < ApplicationController
@@ -8,13 +8,13 @@ module SnlAdmin
 
     def index
       @redirections = if params[:query]
-        term = params[:query].strip
-        conditions = "permalink ILIKE ? OR to_permalink ILIKE ?"
-        SnlAdmin.redirection_class.where(conditions, "%#{term}%", "%#{term}%").
-                 order('permalink asc')
-      else
-        SnlAdmin.redirection_class.order('permalink asc')
-      end.page params[:page]
+                        term = params[:query].strip
+                        conditions = 'permalink ILIKE ? OR to_permalink ILIKE ?'
+                        SnlAdmin.redirection_class
+                        .where(conditions, "%#{term}%", "%#{term}%")
+                      else
+                        SnlAdmin.redirection_class
+                      end.order('permalink asc').page params[:page]
     end
 
     def new
@@ -57,19 +57,19 @@ module SnlAdmin
       params.require(:redirection).permit(:permalink,
                                           :to_permalink,
                                           :from_encyclopedia_id,
-                                          :to_encyclopedia_id)
+                                          :to_encyclopedia_id,
+                                          :state)
     end
 
     def set_redirection
-      @redirection = params[:id] ?
-        SnlAdmin.redirection_class.find(params[:id]) :
-        SnlAdmin.redirection_class.new()
+      @redirection = if params[:id].present?
+                       SnlAdmin.redirection_class.find(params[:id])
+                     else
+                       SnlAdmin.redirection_class.new
+                     end
     end
 
-    def redirection
-      @redirection
-    end
+    attr_reader :redirection
     helper_method :redirection
-
   end
 end

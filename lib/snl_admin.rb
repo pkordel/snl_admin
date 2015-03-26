@@ -1,4 +1,4 @@
-require "snl_admin/engine"
+require 'snl_admin/engine'
 
 module SnlAdmin
   # This is where global configuration options can go
@@ -9,6 +9,7 @@ module SnlAdmin
   mattr_accessor :tagsonomy_class
   mattr_accessor :revision_class
   mattr_accessor :comment_class
+  mattr_accessor :deleted_article_class
 
   def self.user_class
     @@user_class.constantize
@@ -36,5 +37,9 @@ module SnlAdmin
 
   def self.comment_class
     @@comment_class.constantize
+  end
+
+  def self.deleted_article_class
+    @@deleted_article_class.constantize
   end
 end
