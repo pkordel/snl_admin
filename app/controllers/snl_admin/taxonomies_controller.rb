@@ -1,20 +1,19 @@
-# -*- encoding : utf-8 -*-
 require_dependency "snl_admin/application_controller"
 
 module SnlAdmin
   class TaxonomiesController < ApplicationController
-    before_filter :set_taxonomy, except: [:index]
+    before_action :set_taxonomy, except: [:index]
     respond_to :html
 
     def index
       @taxonomies = if params[:query]
-        term = params[:query].strip
-        conditions = "title ILIKE ?"
-        SnlAdmin.taxonomy_class.where(conditions, "%#{term}%").
-                            order('id asc')
-      else
-        SnlAdmin.taxonomy_class.order('id asc')
-      end.page params[:page]
+                      term = params[:query].strip
+                      conditions = "title ILIKE ?"
+                      SnlAdmin.taxonomy_class.where(conditions, "%#{term}%")
+                      .order('id asc')
+                    else
+                      SnlAdmin.taxonomy_class.order('id asc')
+                    end.page params[:page]
     end
 
     def show
@@ -47,11 +46,11 @@ module SnlAdmin
     end
 
     def destroy
-      unless @taxonomy.has_children?
+      if @taxonomy.has_children?
+        notice = t('destroy_taxonomy_forbidden')
+      else
         @taxonomy.destroy
         notice = t('destroy_taxonomy')
-      else
-        notice = t('destroy_taxonomy_forbidden')
       end
       redirect_to taxonomies_path, notice: notice
     end
@@ -64,9 +63,11 @@ module SnlAdmin
     helper_method :taxonomy
 
     def set_taxonomy
-      @taxonomy = params[:id] ?
-        SnlAdmin.taxonomy_class.find(params[:id]) :
-        SnlAdmin.taxonomy_class.new
+      @taxonomy = if params[:id].present?
+                    SnlAdmin.taxonomy_class.find(params[:id])
+                  else
+                    SnlAdmin.taxonomy_class.new
+                  end
     end
 
     def taxonomy_params
@@ -76,12 +77,12 @@ module SnlAdmin
                                        :description)
     end
 
-    def collection_for_parent_id record
+    def collection_for_parent_id(record)
       record_id = record.id || 0
       ancestry_options(
-        Taxonomy.scoped.where("id != ?", record_id).
-                 select([:id, :title, :ancestry, :position]).
-                 arrange(order: 'ancestry, position'))
+        Taxonomy.scoped.where("id != ?", record_id)
+        .select([:id, :title, :ancestry, :position])
+        .arrange(order: 'ancestry, position'))
     end
     helper_method :collection_for_parent_id
 
@@ -89,7 +90,9 @@ module SnlAdmin
       array = []
       nodes.each do |node, children|
         array << [format_string(string, node), node.id]
-        array.concat(ancestry_options(children, format_string(string, node))) if children.size > 0
+        if children.size > 0
+          array.concat(ancestry_options(children, format_string(string, node)))
+        end
       end
       array
     end
