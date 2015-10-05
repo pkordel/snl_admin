@@ -9,7 +9,8 @@ module SnlAdmin
   mattr_accessor :tagsonomy_class
   mattr_accessor :revision_class
   mattr_accessor :comment_class
-  mattr_accessor :deleted_article_class
+  mattr_accessor :article_class
+  mattr_accessor :improvement_class
 
   def self.user_class
     @@user_class.constantize
@@ -39,7 +40,11 @@ module SnlAdmin
     @@comment_class.constantize
   end
 
-  def self.deleted_article_class
-    @@deleted_article_class.constantize
+  def self.article_class
+    @@article_class.constantize
+  end
+
+  def self.improvement_class
+    @@improvement_class.constantize
   end
 end
