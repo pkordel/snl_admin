@@ -1,5 +1,4 @@
-# -*- encoding : utf-8 -*-
-require_dependency "snl_admin/application_controller"
+require_dependency 'snl_admin/application_controller'
 
 module SnlAdmin
   class TagsonomiesController < ApplicationController
@@ -8,13 +7,13 @@ module SnlAdmin
 
     def index
       @tagsonomies = if params[:query]
-        term = params[:query].strip
-        conditions = "title ILIKE ?"
-        SnlAdmin.tagsonomy_class.where(conditions, "%#{term}%").
-                            order('title asc')
-      else
-        SnlAdmin.tagsonomy_class.order('title asc')
-      end.page params[:page]
+                       term = params[:query].strip
+                       conditions = 'title ILIKE ?'
+                       SnlAdmin.tagsonomy_class.where(conditions, "%#{term}%")
+                       .order('title asc')
+                     else
+                       SnlAdmin.tagsonomy_class.order('title asc')
+                     end.page params[:page]
     end
 
     def show
@@ -47,11 +46,11 @@ module SnlAdmin
     end
 
     def destroy
-      unless @tagsonomy.has_children?
+      if @tagsonomy.has_children?
+        notice = t('destroy_tagsonomy_forbidden')
+      else
         @tagsonomy.destroy
         notice = t('destroy_tagsonomy')
-      else
-        notice = t('destroy_tagsonomy_forbidden')
       end
       redirect_to tagsonomies_path, notice: notice
     end
@@ -64,23 +63,27 @@ module SnlAdmin
     helper_method :tagsonomy
 
     def set_tagsonomy
-      @tagsonomy = params[:id] ?
-        SnlAdmin.tagsonomy_class.find(params[:id]) :
-        SnlAdmin.tagsonomy_class.new
+      @tagsonomy = if params[:id].present?
+                     SnlAdmin.tagsonomy_class.find(params[:id])
+                   else
+                     SnlAdmin.tagsonomy_class.new
+                   end
     end
 
     def tagsonomy_params
-      params.require(:tagsonomy).permit(:title, :type, :subtitle, parent_ids: [])
+      params.require(:tagsonomy)
+        .permit(:title, :type, :subtitle, parent_ids: [])
     end
 
-    def collection_for_parent_id record
+    def collection_for_parent_id(record)
       record_id = record.id || 0
-      Tagsonomy.where("id != ? AND type = ? ", record_id, record.type).collect {|t| [t.title, t.id] }
+      Tagsonomy.where('id != ? AND type = ? ', record_id, record.type)
+        .collect { |t| [t.title, t.id] }
     end
     helper_method :collection_for_parent_id
 
     def format_string(string, node)
-      [string, "(#{node.type}) #{node.title}"].compact.join(" | ")
+      [string, "(#{node.type}) #{node.title}"].compact.join(' | ')
     end
   end
 end
