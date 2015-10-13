@@ -3,7 +3,9 @@ module SnlAdmin
     def nav_link(resource, options = {})
       resource = resource.to_s
       klass = resource.classify.safe_constantize
-      title = klass.model_name.plural.titleize if klass
+      title = if klass && klass.respond_to?(:model_name)
+                klass.model_name.plural.titleize
+              end
       title ||= t("#{resource}.title")
 
       name = options.delete(:name) || title
