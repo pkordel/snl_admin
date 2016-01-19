@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    snl_admin (1.2.2)
+    snl_admin (1.2.3)
       bootstrap-kaminari-views
       chartkick
       jquery-rails
