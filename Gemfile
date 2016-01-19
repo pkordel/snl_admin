@@ -19,4 +19,4 @@ gem 'ancestry'
 
 # To use debugger
 gem 'debugger', platforms: [:ruby_19]
-gem 'byebug', '~> 3.1.2', platforms: [:ruby_21]
+gem 'byebug', '~> 8.2.1', platforms: [:ruby_21]

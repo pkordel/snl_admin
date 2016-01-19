@@ -22,13 +22,13 @@ Gem::Specification.new do |spec|
   spec.test_files    = spec.files.grep(/^(test|spec|features)\//)
   spec.require_paths = ['lib']
 
-  spec.add_dependency 'rails', '~> 4.2.3'
+  spec.add_dependency 'rails', '~> 4.2.5'
   spec.add_dependency 'jquery-rails'
   spec.add_dependency 'chartkick'
   spec.add_dependency 'kaminari'
   spec.add_dependency 'bootstrap-kaminari-views'
 
   spec.add_development_dependency 'pg'
-  spec.add_development_dependency 'bundler',  '~> 1.6'
+  spec.add_development_dependency 'bundler', '~> 1.11.2'
   spec.add_development_dependency 'rake'
 end
