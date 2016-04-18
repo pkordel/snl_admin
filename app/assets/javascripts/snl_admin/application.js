@@ -11,7 +11,7 @@
 // GO AFTER THE REQUIRES BELOW.
 //
 //= require jquery
+//= require bootstrap-sprockets
 //= require jquery_ujs
 //= require jquery-ui-1.10.3.custom.min
-//= require snl_admin/bootstrap.min
 //= require snl_admin/redirections
