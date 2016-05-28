@@ -1,3 +1,3 @@
 module SnlAdmin
-  VERSION = '0.7.4'
+  VERSION = '1.2.5'
 end

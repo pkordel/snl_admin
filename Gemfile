@@ -8,7 +8,6 @@ gemspec
 # used by the dummy application
 gem 'jquery-rails'
 gem 'chartkick'
-gem 'strong_parameters'
 gem 'kaminari'
 gem 'bootstrap-kaminari-views'
 gem 'ancestry'
@@ -19,4 +18,5 @@ gem 'ancestry'
 # your gem to rubygems.org.
 
 # To use debugger
-gem 'debugger', platforms: [:ruby_19, :ruby_20]
+gem 'debugger', platforms: [:ruby_19]
+gem 'byebug', '~> 8.2.1', platforms: [:ruby_21]

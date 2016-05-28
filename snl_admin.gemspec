@@ -1,4 +1,3 @@
-# coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 
@@ -13,26 +12,22 @@ Gem::Specification.new do |spec|
   spec.authors     = ['Peter Kordel']
   spec.email       = ['pkordel@gmail.com']
   spec.homepage    = 'http://pkordel.github.com'
-  spec.description   = %q{This gem provides a simple admin interface.}
-  spec.summary       = %q{This gem provides a simple admin interface.}
+  spec.description   = %(This gem provides a simple admin interface.)
+  spec.summary       = %(This gem provides a simple admin interface.)
   spec.license       = 'MIT'
 
-  spec.files         = `git ls-files`.split($/)
-  spec.executables   = spec.files.grep(%r{^bin/}) { |f| File.basename(f) }
-  spec.test_files    = spec.files.grep(%r{^(test|spec|features)/})
+  spec.files         = `git ls-files`.split($RS)
+  spec.executables   = spec.files.grep(/^bin\//) { |f| File.basename(f) }
+  spec.test_files    = spec.files.grep(/^(test|spec|features)\//)
   spec.require_paths = ['lib']
 
-  spec.add_dependency 'rails', '~> 3.2.20'
+  spec.add_dependency 'rails', '~> 4.2.6'
   spec.add_dependency 'jquery-rails'
-  spec.add_dependency 'sass-rails'
-  spec.add_dependency 'strong_parameters'
   spec.add_dependency 'chartkick'
   spec.add_dependency 'kaminari'
   spec.add_dependency 'bootstrap-kaminari-views'
-  spec.add_dependency 'pg'
-  spec.add_dependency 'activerecord-postgres-hstore'
 
-  spec.add_development_dependency 'bundler',  '~> 1.3'
+  spec.add_development_dependency 'pg'
+  spec.add_development_dependency 'bundler', '~> 1.11.2'
   spec.add_development_dependency 'rake'
-
 end
