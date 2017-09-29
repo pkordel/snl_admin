@@ -3,7 +3,7 @@ require_dependency "snl_admin/application_controller"
 
 module SnlAdmin
   class UsersController < ApplicationController
-    before_filter :set_user, except: [:index]
+    before_action :set_user, except: [:index]
     respond_to :html
 
     def index

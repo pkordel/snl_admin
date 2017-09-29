@@ -2,7 +2,7 @@ require_dependency 'snl_admin/application_controller'
 
 module SnlAdmin
   class TagsonomiesController < ApplicationController
-    before_filter :set_tagsonomy, except: [:index]
+    before_action :set_tagsonomy, except: [:index]
     respond_to :html
 
     def index
