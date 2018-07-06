@@ -6,11 +6,11 @@ source "http://rubygems.org"
 gemspec
 
 # used by the dummy application
-gem 'jquery-rails'
-gem 'chartkick'
-gem 'kaminari'
-gem 'bootstrap-kaminari-views'
 gem 'ancestry'
+gem 'bootstrap-kaminari-views'
+gem 'chartkick'
+gem 'jquery-rails'
+gem 'kaminari'
 
 # Declare any dependencies that are still in development here instead of in
 # your gemspec. These might include edge Rails or gems from your path or
@@ -18,5 +18,5 @@ gem 'ancestry'
 # your gem to rubygems.org.
 
 # To use debugger
+gem 'byebug'
 gem 'debugger', platforms: [:ruby_19]
-gem 'byebug', '~> 8.2.1', platforms: [:ruby_21]
