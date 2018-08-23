@@ -1,7 +1,12 @@
 module SnlAdmin
   class ApplicationController < ActionController::Base
-
     protected
+
+    def organization
+      @organization ||= Organization.find_by(domain_name: Conf.host) ||
+                        Organization.default
+    end
+    helper_method :organization
 
     def current_user
       return nil unless session[:user_id]
