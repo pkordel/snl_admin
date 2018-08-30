@@ -1,4 +1,3 @@
-# -*- encoding : utf-8 -*-
 require_dependency "snl_admin/application_controller"
 
 module SnlAdmin
@@ -8,17 +7,18 @@ module SnlAdmin
 
     def index
       @users = if params[:query]
-        term = params[:query].strip
-        conditions = "email_address ILIKE ? OR firstname ILIKE ? OR lastname ILIKE ?"
-        SnlAdmin.user_class.where(conditions, "%#{term}%", "%#{term}%", "%#{term}%").
-                            order('firstname asc')
-      else
-        SnlAdmin.user_class.order('firstname asc')
-      end.page params[:page]
+                 term = params[:query].strip
+                 conditions = "email_address ILIKE ? OR firstname ILIKE ? " \
+                              "OR lastname ILIKE ?"
+                 SnlAdmin.user_class.where(
+                   conditions, "%#{term}%", "%#{term}%", "%#{term}%"
+                 ).order('firstname asc')
+               else
+                 SnlAdmin.user_class.order('firstname asc')
+               end.page params[:page]
     end
 
-    def show
-    end
+    def show; end
 
     def new
       @title = t('new_user')
@@ -53,9 +53,11 @@ module SnlAdmin
     private
 
     def set_user
-      @user = params[:id] ?
-        SnlAdmin.user_class.find(params[:id]) :
-        SnlAdmin.user_class.new(role: 'contributor')
+      @user = if params[:id]
+                SnlAdmin.user_class.find(params[:id])
+              else
+                SnlAdmin.user_class.new(role: 'contributor')
+              end
     end
 
     def user

@@ -2,6 +2,7 @@ require 'snl_admin/engine'
 
 module SnlAdmin
   # This is where global configuration options can go
+  mattr_accessor :organization_class
   mattr_accessor :user_class
   mattr_accessor :redirection_class
   mattr_accessor :license_class
@@ -11,6 +12,10 @@ module SnlAdmin
   mattr_accessor :comment_class
   mattr_accessor :article_class
   mattr_accessor :improvement_class
+
+  def self.organization_class
+    @@organization_class.constantize
+  end
 
   def self.user_class
     @@user_class.constantize
