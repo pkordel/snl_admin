@@ -11,5 +11,15 @@ module SnlAdmin
       fullpath
     end
     helper_method :view_url
+
+    def nullify_unless_valid_integer(value)
+      return if value.blank? || value.is_a?(Hash)
+
+      Integer(value)
+    rescue ArgumentError => e
+      logger.warn("Failed to parse param to integer: #{e}")
+      nil
+    end
+    helper_method :nullify_unless_valid_integer
   end
 end
