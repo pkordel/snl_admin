@@ -1,4 +1,4 @@
-lib = File.expand_path('../lib', __FILE__)
+lib = File.expand_path('lib', __dir__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 
 # Maintain your gem's version:
@@ -21,13 +21,13 @@ Gem::Specification.new do |spec|
   spec.test_files    = spec.files.grep(%r{^(test|spec|features)\/})
   spec.require_paths = ['lib']
 
-  spec.add_dependency 'rails', '~> 4.2.10'
-  spec.add_dependency 'jquery-rails'
-  spec.add_dependency 'chartkick'
-  spec.add_dependency 'kaminari'
   spec.add_dependency 'bootstrap-kaminari-views'
+  spec.add_dependency 'chartkick'
+  spec.add_dependency 'jquery-rails'
+  spec.add_dependency 'kaminari'
+  spec.add_dependency 'rails', '~> 4.2.11.1'
 
-  spec.add_development_dependency 'pg'
   spec.add_development_dependency 'bundler'
+  spec.add_development_dependency 'pg', '~> 0.19.0'
   spec.add_development_dependency 'rake'
 end
