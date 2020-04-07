@@ -1,12 +1,12 @@
 PATH
   remote: .
   specs:
-    snl_admin (2.1.2)
+    snl_admin (2.1.3)
       bootstrap-kaminari-views
       chartkick
       jquery-rails
       kaminari
-      rails (~> 4.2.10)
+      rails (~> 4.2.11.1)
 
 GEM
   remote: http://rubygems.org/
@@ -51,11 +51,11 @@ GEM
     bootstrap-kaminari-views (0.0.5)
       kaminari (>= 0.13)
       rails (>= 3.1)
-    builder (3.2.3)
-    byebug (11.0.1)
-    chartkick (3.3.0)
+    builder (3.2.4)
+    byebug (11.1.1)
+    chartkick (3.3.1)
     columnize (0.9.0)
-    concurrent-ruby (1.1.5)
+    concurrent-ruby (1.1.6)
     crass (1.0.6)
     debugger (1.6.8)
       columnize (>= 0.3.1)
@@ -72,30 +72,30 @@ GEM
       rails-dom-testing (>= 1, < 3)
       railties (>= 4.2.0)
       thor (>= 0.14, < 2.0)
-    kaminari (1.1.1)
+    kaminari (1.2.0)
       activesupport (>= 4.1.0)
-      kaminari-actionview (= 1.1.1)
-      kaminari-activerecord (= 1.1.1)
-      kaminari-core (= 1.1.1)
-    kaminari-actionview (1.1.1)
+      kaminari-actionview (= 1.2.0)
+      kaminari-activerecord (= 1.2.0)
+      kaminari-core (= 1.2.0)
+    kaminari-actionview (1.2.0)
       actionview
-      kaminari-core (= 1.1.1)
-    kaminari-activerecord (1.1.1)
+      kaminari-core (= 1.2.0)
+    kaminari-activerecord (1.2.0)
       activerecord
-      kaminari-core (= 1.1.1)
-    kaminari-core (1.1.1)
-    loofah (2.4.0)
+      kaminari-core (= 1.2.0)
+    kaminari-core (1.2.0)
+    loofah (2.5.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
     mail (2.7.1)
       mini_mime (>= 0.1.1)
     mini_mime (1.0.2)
     mini_portile2 (2.4.0)
-    minitest (5.11.3)
-    nokogiri (1.10.8)
+    minitest (5.14.0)
+    nokogiri (1.10.9)
       mini_portile2 (~> 2.4.0)
-    pg (1.1.4)
-    rack (1.6.12)
+    pg (0.19.0)
+    rack (1.6.13)
     rack-test (0.6.3)
       rack (>= 1.0)
     rails (4.2.11.1)
@@ -115,24 +115,24 @@ GEM
       activesupport (>= 4.2.0, < 5.0)
       nokogiri (~> 1.6)
       rails-deprecated_sanitizer (>= 1.0.1)
-    rails-html-sanitizer (1.2.0)
-      loofah (~> 2.2, >= 2.2.2)
+    rails-html-sanitizer (1.3.0)
+      loofah (~> 2.3)
     railties (4.2.11.1)
       actionpack (= 4.2.11.1)
       activesupport (= 4.2.11.1)
       rake (>= 0.8.7)
       thor (>= 0.18.1, < 2.0)
     rake (12.3.3)
-    sprockets (3.7.2)
+    sprockets (4.0.0)
       concurrent-ruby (~> 1.0)
       rack (> 1, < 3)
     sprockets-rails (3.2.1)
       actionpack (>= 4.0)
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
-    thor (0.20.3)
+    thor (1.0.1)
     thread_safe (0.3.6)
-    tzinfo (1.2.5)
+    tzinfo (1.2.7)
       thread_safe (~> 0.1)
 
 PLATFORMS
@@ -141,14 +141,14 @@ PLATFORMS
 DEPENDENCIES
   ancestry
   bootstrap-kaminari-views
-  bundler
+  bundler (~> 1.17)
   byebug
   chartkick
   debugger
   jquery-rails
   kaminari
-  pg
-  rake
+  pg (~> 0.19.0)
+  rake (~> 12.3.3)
   snl_admin!
 
 BUNDLED WITH
