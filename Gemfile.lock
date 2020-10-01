@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    snl_admin (2.1.2)
+    snl_admin (2.1.3)
       bootstrap-kaminari-views
       chartkick
       jquery-rails
@@ -95,7 +95,7 @@ GEM
     nokogiri (1.10.8)
       mini_portile2 (~> 2.4.0)
     pg (1.1.4)
-    rack (2.1.4)
+    rack (1.6.12)
     rack-test (0.6.3)
       rack (>= 1.0)
     rails (4.2.11.1)
